@@ -1,0 +1,36 @@
+version: '3'
+services:
+  pg-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    image: pg-server:20.1
+    container_name: pg-server
+    ports:
+      - "7007:7007"
+    volumes:
+     - ../graphs:/graphs
+     - ./conf/pgx.conf:/etc/oracle/graph/pgx.conf
+     - ./conf/server.conf:/etc/oracle/graph/server.conf
+     - ./keystore.p12:/opt/oracle/keystore.p12
+  pg-client:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    image: pg-client:20.1
+    container_name: pg-client
+    volumes:
+     - ../graphs:/graphs
+     - ./keystore.p12:/opt/oracle/keystore.p12
+    stdin_open: true
+    tty: true
+  zeppelin:
+    image: apache/zeppelin:0.8.1
+    container_name: zeppelin
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../graphs:/graphs
+      - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
+      - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
+      - ./zeppelin/notebook:/zeppelin/notebook

@@ -1,0 +1,7 @@
+FROM oracle/openjdk:8
+COPY ./tmp/oracle-graph-20.1.0.x86_64.rpm /tmp
+RUN rpm -ivh /tmp/oracle-graph-20.1.0.x86_64.rpm
+EXPOSE 7007
+ENV PATH=$PATH:/opt/oracle/graph/pgx/bin
+WORKDIR /opt/oracle/graph/pgx/bin
+CMD ["sh", "start-server"]
