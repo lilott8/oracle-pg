@@ -2,19 +2,17 @@
   "format":"pg",
   "db_engine":"rdbms",
   "jdbc_url":"jdbc:oracle:thin:@oracle-db:1521/orclpdb1",
-  "username":"hr",
+  "username":"customer_360",
   "keystore_alias":"database1",
   "max_num_connections":8,
-  "name":"hr",
+  "name":"customer_360",
   "vertex_props": [
-    {"name":"COUNTRY_NAME", "type":"string"},
-    {"name":"DEPARTMENT_NAME", "type":"string"},
-    {"name":"REGION_NAME", "type":"string"},
-    {"name":"FIRST_NAME", "type":"string"},
-    {"name":"LAST_NAME", "type":"string"},
-    {"name":"SALARY", "type":"double"}
+    {"name":"TYPE", "type":"string"},
+    {"name":"NAME", "type":"string"},
+    {"name":"ACCOUNT_NO", "type":"string"}
   ],
   "edge_props": [
+    {"name":"SINCE", "type":"string"}
   ],
   "partition_while_loading":"by_label",
   "loading":{

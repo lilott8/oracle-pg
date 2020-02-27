@@ -1,11 +1,11 @@
 version: '3'
 services:
-  pg-server:
+  graph-server:
     build:
       context: .
       dockerfile: Dockerfile-server
-    image: pg-server:20.1
-    container_name: pg-server
+    image: graph-server:20.1
+    container_name: graph-server
     ports:
       - "7007:7007"
     volumes:
@@ -16,12 +16,12 @@ services:
     command: start-server --secret-store /opt/oracle/keystore.p12
     stdin_open: true
     tty: true
-  pg-client:
+  graph-client:
     build:
       context: .
       dockerfile: Dockerfile-client
-    image: pg-client:20.1
-    container_name: pg-client
+    image: graph-client:20.1
+    container_name: graph-client
     volumes:
      - ../graphs:/graphs
      - ./keystore.p12:/opt/oracle/keystore.p12
@@ -37,3 +37,12 @@ services:
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
+  oracle-db:
+    image: oracle/database:19.3.0-ee
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+    volumes:
+      - ../graphs:/graphs
+    environment:
+      - ORACLE_PWD=Welcome1

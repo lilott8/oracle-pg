@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n## Getting started\nThe sample data, and some config files, are available from Ryota\u0027s GitHub pgx-training repository under the c360/2019-05-06 directory.\nPGX is part of the supported Big Data Spatial and Graph or Database Spatial and Graph releases and included in those downloads.\nLoad the C360 sample data. Let\u0027s assume the pgx-training repository was downloaded to ~/Examples/pgx-training-master. ",
+      "text": "%md\n## Introduction\nPGX is a part of the supported Oracle Property Graph releases included in Oracle Database and Oracle Big Data Spatial and Graph.\nThe Customer 360 sample data is an integrated dataset of 1) accounts and account owners, 2) purchases by the people who own those accounts, and 3) transactions between these accounts. The combined dataset is then used to perform the following common graph query and analyses: pattern matching, detection of cycles, finding important nodes, community detection, and recommendation.",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:24.114",
+      "dateUpdated": "2020-02-26 19:21:23.407",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -26,7 +26,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eGetting started\u003c/h2\u003e\n\u003cp\u003eThe sample data, and some config files, are available from Ryota\u0026rsquo;s GitHub pgx-training repository under the c360/2019-05-06 directory.\u003cbr/\u003ePGX is part of the supported Big Data Spatial and Graph or Database Spatial and Graph releases and included in those downloads.\u003cbr/\u003eLoad the C360 sample data. Let\u0026rsquo;s assume the pgx-training repository was downloaded to ~/Examples/pgx-training-master. \u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eIntroduction\u003c/h2\u003e\n\u003cp\u003ePGX is a part of the supported Oracle Property Graph releases included in Oracle Database and Oracle Big Data Spatial and Graph.\u003cbr/\u003eThe Customer 360 sample data is an integrated dataset of 1) accounts and account owners, 2) purchases by the people who own those accounts, and 3) transactions between these accounts. The combined dataset is then used to perform the following common graph query and analyses: pattern matching, detection of cycles, finding important nodes, community detection, and recommendation.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -34,15 +34,15 @@
       "jobName": "paragraph_1582463310167_-141770078",
       "id": "20190329-123523_1871171899",
       "dateCreated": "2020-02-23 13:08:30.167",
-      "dateStarted": "2020-02-23 13:19:24.294",
-      "dateFinished": "2020-02-23 13:19:24.501",
+      "dateStarted": "2020-02-26 19:21:23.415",
+      "dateFinished": "2020-02-26 19:21:23.484",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pgx\ng \u003d session.getGraph(\"Customer 360\")",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 14:29:30.821",
+      "dateUpdated": "2020-02-26 19:13:23.638",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -53,7 +53,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB"
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -64,7 +65,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dCustomer 360,N\u003d15,E\u003d24,created\u003d1582467942317]"
+            "data": "PgxGraph[name\u003dCustomer 360,N\u003d15,E\u003d24,created\u003d1582741620285]"
           }
         ]
       },
@@ -72,15 +73,15 @@
       "jobName": "paragraph_1582463310204_1999191484",
       "id": "20190402-164753_989376579",
       "dateCreated": "2020-02-23 13:08:30.204",
-      "dateStarted": "2020-02-23 14:29:30.983",
-      "dateFinished": "2020-02-23 14:29:31.115",
+      "dateStarted": "2020-02-26 19:12:35.202",
+      "dateFinished": "2020-02-26 19:12:35.354",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "// Show all properties about the account \"xxx-yyy-202\"\n\ng.queryPgql(\"\"\"\n  SELECT ID(a), a.account_no, a.balance\n  MATCH (a)\n  WHERE a.type \u003d \u0027account\u0027\n    AND a.account_no \u003d \u0027xxx-yyy-202\u0027\n\"\"\");",
+      "text": "%pgx\n// Show all properties about the account \"xxx-yyy-202\"\ng.queryPgql(\"\"\"\n  SELECT ID(a), a.account_no, a.balance\n  MATCH (a)\n  WHERE a.type \u003d \u0027account\u0027\n    AND a.account_no \u003d \u0027xxx-yyy-202\u0027\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:36:53.791",
+      "dateUpdated": "2020-02-26 19:13:23.775",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -122,7 +123,8 @@
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -141,15 +143,15 @@
       "jobName": "paragraph_1582463310206_-719836348",
       "id": "20190329-144320_280072223",
       "dateCreated": "2020-02-23 13:08:30.207",
-      "dateStarted": "2020-02-23 13:36:53.840",
-      "dateFinished": "2020-02-23 13:36:54.207",
+      "dateStarted": "2020-02-26 19:12:35.636",
+      "dateFinished": "2020-02-26 19:12:35.948",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "// Show any related information about the account \"xxx-yyy-202\"\n\ng.queryPgql(\"\"\"\n  SELECT a.account_no, LABEL(e), n.type\n  MATCH (a)-[e]-(n)\n  WHERE a.type \u003d \u0027account\u0027\n    AND a.account_no \u003d \u0027xxx-yyy-202\u0027\n  ORDER BY LABEL(e)\n\"\"\");",
+      "text": "%pgx\n// Show any related information about the account \"xxx-yyy-202\"\ng.queryPgql(\"\"\"\n  SELECT a.account_no, LABEL(e), n.type\n  MATCH (a)-[e]-(n)\n  WHERE a.type \u003d \u0027account\u0027\n    AND a.account_no \u003d \u0027xxx-yyy-202\u0027\n  ORDER BY LABEL(e)\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:28.133",
+      "dateUpdated": "2020-02-26 19:13:23.892",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -188,9 +190,11 @@
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -209,15 +213,15 @@
       "jobName": "paragraph_1582463310208_441947397",
       "id": "20190329-124705_669100399",
       "dateCreated": "2020-02-23 13:08:30.209",
-      "dateStarted": "2020-02-23 13:19:28.441",
-      "dateFinished": "2020-02-23 13:19:29.179",
+      "dateStarted": "2020-02-26 19:12:36.168",
+      "dateFinished": "2020-02-26 19:12:36.433",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Pattern Matching\nFind accounts that had an inbound and an outbound transfer, of over 500, on the same day. The PGQL query for this is:",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:29.261",
+      "dateUpdated": "2020-02-26 19:16:05.811",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -248,15 +252,15 @@
       "jobName": "paragraph_1582463310212_-397584666",
       "id": "20190329-123650_1595618116",
       "dateCreated": "2020-02-23 13:08:30.212",
-      "dateStarted": "2020-02-23 13:19:30.085",
-      "dateFinished": "2020-02-23 13:19:30.117",
+      "dateStarted": "2020-02-26 19:12:36.609",
+      "dateFinished": "2020-02-26 19:12:36.661",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "// Show account which has inbound transfer and outbound transfer on the same day and their amount are both more than 500.\n\ng.queryPgql(\"\"\"\n  SELECT a.account_no, a.balance, t1.amount, t2.amount, t1.date\n  MATCH (a)\u003c-[t1:transfer]-(a1)\n      , (a)-[t2:transfer]-\u003e(a2)\n  WHERE t1.date \u003d t2.date\n    AND t1.amount \u003e 500\n    AND t2.amount \u003e 500\n    AND a.balance \u003c 300\n\"\"\");",
+      "text": "%pgx\n// Show account which has inbound transfer and outbound transfer on the same day and their amount are both more than 500.\ng.queryPgql(\"\"\"\n  SELECT a.account_no, a.balance, t1.amount, t2.amount, t1.date\n  MATCH (a)\u003c-[t1:transfer]-(a1)\n      , (a)-[t2:transfer]-\u003e(a2)\n  WHERE t1.date \u003d t2.date\n    AND t1.amount \u003e 500\n    AND t2.amount \u003e 500\n    AND a.balance \u003c 300\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:30.169",
+      "dateUpdated": "2020-02-26 19:13:24.064",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -301,7 +305,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -320,15 +325,15 @@
       "jobName": "paragraph_1582463310225_2091800673",
       "id": "20190328-161704_390823673",
       "dateCreated": "2020-02-23 13:08:30.225",
-      "dateStarted": "2020-02-23 13:19:30.809",
-      "dateFinished": "2020-02-23 13:19:32.784",
+      "dateStarted": "2020-02-26 19:12:37.030",
+      "dateFinished": "2020-02-26 19:12:37.319",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Detect Cycles\nNext we use PGQL to find a series of transfers that start and end at the same account such as A to B to A, or A to B to C to A.",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:32.849",
+      "dateUpdated": "2020-02-26 19:16:10.068",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -359,15 +364,15 @@
       "jobName": "paragraph_1582463310236_1341728357",
       "id": "20190329-123841_697678840",
       "dateCreated": "2020-02-23 13:08:30.236",
-      "dateStarted": "2020-02-23 13:19:33.490",
-      "dateFinished": "2020-02-23 13:19:33.536",
+      "dateStarted": "2020-02-26 19:12:37.484",
+      "dateFinished": "2020-02-26 19:12:37.565",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "// Show any transactions where money is going back and forward in two accounts.\n\ng.queryPgql(\"\"\"\n  SELECT a1.account_no, t1.date, t1.amount, a2.account_no, t2.date, t2.amount\n  MATCH (a1)-[t1:transfer]-\u003e(a2)-[t2:transfer]-\u003e(a1)\n  WHERE t1.date \u003c t2.date\n\"\"\");\n",
+      "text": "%pgx\n// Show any transactions where money is going back and forward in two accounts.\ng.queryPgql(\"\"\"\n  SELECT a1.account_no, t1.date, t1.amount, a2.account_no, t2.date, t2.amount\n  MATCH (a1)-[t1:transfer]-\u003e(a2)-[t2:transfer]-\u003e(a1)\n  WHERE t1.date \u003c t2.date\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:33.590",
+      "dateUpdated": "2020-02-26 19:13:24.349",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -413,7 +418,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -432,15 +438,15 @@
       "jobName": "paragraph_1582463310241_731123879",
       "id": "20190328-162035_1959457469",
       "dateCreated": "2020-02-23 13:08:30.241",
-      "dateStarted": "2020-02-23 13:19:34.444",
-      "dateFinished": "2020-02-23 13:19:35.699",
+      "dateStarted": "2020-02-26 19:12:37.890",
+      "dateFinished": "2020-02-26 19:12:38.226",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "// Show any cyclic transactions in three accounts.\n\ng.queryPgql(\"\"\"\n  SELECT a1.account_no, t1.amount, a2.account_no, t2.amount\n       , a3.account_no, t3.amount\n  MATCH (a1)-[t1:transfer]-\u003e(a2)-[t2:transfer]-\u003e(a3)-[t3:transfer]-\u003e(a1)\n  WHERE t1.date \u003c t2.date\n  AND t2.date \u003c t3.date\n\"\"\");\n",
+      "text": "%pgx\n// Show any cyclic transactions in three accounts.\ng.queryPgql(\"\"\"\n  SELECT a1.account_no, t1.amount, a2.account_no, t2.amount\n       , a3.account_no, t3.amount\n  MATCH (a1)-[t1:transfer]-\u003e(a2)-[t2:transfer]-\u003e(a3)-[t3:transfer]-\u003e(a1)\n  WHERE t1.date \u003c t2.date\n  AND t2.date \u003c t3.date\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:35.754",
+      "dateUpdated": "2020-02-26 19:13:24.541",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -486,7 +492,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -505,15 +512,15 @@
       "jobName": "paragraph_1582463310246_-854486388",
       "id": "20190328-163004_1966630867",
       "dateCreated": "2020-02-23 13:08:30.248",
-      "dateStarted": "2020-02-23 13:19:36.302",
-      "dateFinished": "2020-02-23 13:19:36.819",
+      "dateStarted": "2020-02-26 19:12:38.536",
+      "dateFinished": "2020-02-26 19:12:38.851",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Influential Accounts",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:36.917",
+      "dateUpdated": "2020-02-26 19:16:13.624",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -544,15 +551,15 @@
       "jobName": "paragraph_1582463310260_1127525625",
       "id": "20190328-163239_404136926",
       "dateCreated": "2020-02-23 13:08:30.260",
-      "dateStarted": "2020-02-23 13:19:37.487",
-      "dateFinished": "2020-02-23 13:19:37.584",
+      "dateStarted": "2020-02-26 19:12:39.034",
+      "dateFinished": "2020-02-26 19:12:39.060",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "sg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027transfer\u0027\"));",
+      "text": "%pgx\nsg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027transfer\u0027\"));",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:37.699",
+      "dateUpdated": "2020-02-26 19:13:24.904",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -577,7 +584,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dsub-graph_15,N\u003d6,E\u003d8,created\u003d1582463978988]"
+            "data": "PgxGraph[name\u003dsub-graph_54,N\u003d6,E\u003d8,created\u003d1582744359975]"
           }
         ]
       },
@@ -585,15 +592,15 @@
       "jobName": "paragraph_1582463310273_2054355362",
       "id": "20190328-163330_1056763914",
       "dateCreated": "2020-02-23 13:08:30.274",
-      "dateStarted": "2020-02-23 13:19:38.419",
-      "dateFinished": "2020-02-23 13:19:39.377",
+      "dateStarted": "2020-02-26 19:12:39.691",
+      "dateFinished": "2020-02-26 19:12:40.059",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "analyst.pagerank(graph:sg);",
+      "text": "%pgx\nanalyst.pagerank(sg);",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:39.432",
+      "dateUpdated": "2020-02-26 19:13:25.029",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -606,7 +613,8 @@
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -617,7 +625,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "VertexProperty[name\u003dpagerank,type\u003ddouble,graph\u003dsub-graph_15]"
+            "data": "VertexProperty[name\u003dpagerank,type\u003ddouble,graph\u003dsub-graph_54]"
           }
         ]
       },
@@ -625,15 +633,15 @@
       "jobName": "paragraph_1582463310283_-813363346",
       "id": "20190328-163457_238150311",
       "dateCreated": "2020-02-23 13:08:30.283",
-      "dateStarted": "2020-02-23 13:19:40.010",
-      "dateFinished": "2020-02-23 13:19:40.310",
+      "dateStarted": "2020-02-26 19:12:40.437",
+      "dateFinished": "2020-02-26 19:12:40.655",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "sg.queryPgql(\"\"\"\n  SELECT a.account_no, a.pagerank\n  MATCH (a)\n  ORDER BY a.pagerank DESC\n\"\"\");",
+      "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT a.account_no, a.pagerank\n  MATCH (a)\n  ORDER BY a.pagerank DESC\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:40.314",
+      "dateUpdated": "2020-02-26 19:13:25.134",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -675,7 +683,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -694,15 +703,15 @@
       "jobName": "paragraph_1582463310293_1394780200",
       "id": "20190328-163543_48958968",
       "dateCreated": "2020-02-23 13:08:30.294",
-      "dateStarted": "2020-02-23 13:19:40.926",
-      "dateFinished": "2020-02-23 13:19:41.865",
+      "dateStarted": "2020-02-26 19:12:40.863",
+      "dateFinished": "2020-02-26 19:12:41.091",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Community Detection",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:19:41.912",
+      "dateUpdated": "2020-02-26 19:13:37.071",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -733,15 +742,15 @@
       "jobName": "paragraph_1582463310300_430088228",
       "id": "20190328-163825_497501464",
       "dateCreated": "2020-02-23 13:08:30.300",
-      "dateStarted": "2020-02-23 13:19:42.561",
-      "dateFinished": "2020-02-23 13:19:42.597",
+      "dateStarted": "2020-02-26 19:12:41.470",
+      "dateFinished": "2020-02-26 19:12:41.490",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "sg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027transfer\u0027\"))",
+      "text": "%pgx\nsg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027transfer\u0027\"))",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:06.149",
+      "dateUpdated": "2020-02-26 19:13:25.392",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -754,7 +763,8 @@
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -765,7 +775,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dsub-graph_41,N\u003d6,E\u003d8,created\u003d1582464246646]"
+            "data": "PgxGraph[name\u003dsub-graph_56,N\u003d6,E\u003d8,created\u003d1582744362311]"
           }
         ]
       },
@@ -773,15 +783,15 @@
       "jobName": "paragraph_1582463310311_-284527983",
       "id": "20190328-164058_1428502133",
       "dateCreated": "2020-02-23 13:08:30.311",
-      "dateStarted": "2020-02-23 13:24:06.240",
-      "dateFinished": "2020-02-23 13:24:06.727",
+      "dateStarted": "2020-02-26 19:12:42.038",
+      "dateFinished": "2020-02-26 19:12:42.337",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "result \u003d analyst.wcc(sg)",
+      "text": "%pgx\nresult \u003d analyst.wcc(sg)",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:08.502",
+      "dateUpdated": "2020-02-26 19:13:25.477",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -794,7 +804,8 @@
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {
@@ -808,7 +819,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "ComponentCollection[name\u003dDB7FEE9C-684D-4C44-A800-9A02F08E8D93,graph\u003dsub-graph_41]"
+            "data": "ComponentCollection[name\u003d122C6FC9-4FF6-45ED-B8A0-5C04FF80E485,graph\u003dsub-graph_56]"
           }
         ]
       },
@@ -816,15 +827,15 @@
       "jobName": "paragraph_1582463310321_-26620187",
       "id": "20190328-164119_1476039810",
       "dateCreated": "2020-02-23 13:08:30.321",
-      "dateStarted": "2020-02-23 13:24:08.675",
-      "dateFinished": "2020-02-23 13:24:09.025",
+      "dateStarted": "2020-02-26 19:12:42.674",
+      "dateFinished": "2020-02-26 19:12:43.222",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "partition \u003d result.getPartitionByVertex(g.getVertex(201));\npartition.each{println it.getId()+\" \"+it.getProperty(\"account_no\")}",
+      "text": "%pgx\npartition \u003d result.getPartitionByVertex(g.getVertex(201));\npartition.each{println it.getId()+\" \"+it.getProperty(\"account_no\")}",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:10.947",
+      "dateUpdated": "2020-02-26 19:13:25.587",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -837,7 +848,8 @@
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -856,27 +868,29 @@
       "jobName": "paragraph_1582463310339_-1954671672",
       "id": "20190328-164130_1125722494",
       "dateCreated": "2020-02-23 13:08:30.339",
-      "dateStarted": "2020-02-23 13:24:11.030",
-      "dateFinished": "2020-02-23 13:24:12.759",
+      "dateStarted": "2020-02-26 19:12:43.726",
+      "dateFinished": "2020-02-26 19:12:45.049",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "result \u003d analyst.sccKosaraju(sg)",
+      "text": "%pgx\nresult \u003d analyst.sccKosaraju(sg)",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:16.107",
+      "dateUpdated": "2020-02-26 19:13:25.672",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -887,7 +901,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "ComponentCollection[name\u003d82DB3D81-A552-4690-BF4D-BB3B8D5D4588,graph\u003dsub-graph_41]\nComponentCollection[name\u003d82DB3D81-A552-4690-BF4D-BB3B8D5D4588,graph\u003dsub-graph_41]\nComponentCollection[name\u003d82DB3D81-A552-4690-BF4D-BB3B8D5D4588,graph\u003dsub-graph_41]"
+            "data": "ComponentCollection[name\u003dC379BCCA-3011-484F-8AEA-016BAE07D4E3,graph\u003dsub-graph_56]\nComponentCollection[name\u003dC379BCCA-3011-484F-8AEA-016BAE07D4E3,graph\u003dsub-graph_56]\nComponentCollection[name\u003dC379BCCA-3011-484F-8AEA-016BAE07D4E3,graph\u003dsub-graph_56]"
           }
         ]
       },
@@ -895,27 +909,29 @@
       "jobName": "paragraph_1582463310346_-2090461197",
       "id": "20190328-164236_298791382",
       "dateCreated": "2020-02-23 13:08:30.347",
-      "dateStarted": "2020-02-23 13:24:16.277",
-      "dateFinished": "2020-02-23 13:24:16.654",
+      "dateStarted": "2020-02-26 19:12:45.380",
+      "dateFinished": "2020-02-26 19:12:45.588",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "partition \u003d result.getPartitionByVertex(g.getVertex(201))\npartition.each{println it.getId()+\" \"+it.getProperty(\"account_no\")}",
+      "text": "%pgx\npartition \u003d result.getPartitionByVertex(g.getVertex(201))\npartition.each{println it.getId()+\" \"+it.getProperty(\"account_no\")}",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:18.911",
+      "dateUpdated": "2020-02-26 19:13:25.811",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -934,15 +950,15 @@
       "jobName": "paragraph_1582463310350_-2073816255",
       "id": "20190328-164629_440403254",
       "dateCreated": "2020-02-23 13:08:30.350",
-      "dateStarted": "2020-02-23 13:24:19.100",
-      "dateFinished": "2020-02-23 13:24:21.711",
+      "dateStarted": "2020-02-26 19:12:45.882",
+      "dateFinished": "2020-02-26 19:12:46.559",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "cs \u003d sg.createChangeSet()\nrs \u003d sg.queryPgql(\"SELECT DISTINCT a WHERE (a)-[:transfer]-()\")\nfor (r in rs) {\n  v \u003d r.getVertex(1)\n  i \u003d result.getPartitionIndexOfVertex(v)\n  cs.updateVertex(v.getId()).setProperty(\"component\", i)\n}\nsg \u003d cs.build()",
+      "text": "%pgx\ncs \u003d sg.createChangeSet()\nrs \u003d sg.queryPgql(\"SELECT DISTINCT a WHERE (a)-[:transfer]-()\")\nfor (r in rs) {\n  v \u003d r.getVertex(1)\n  i \u003d result.getPartitionIndexOfVertex(v)\n  cs.updateVertex(v.getId()).setProperty(\"component\", i)\n}\nsg \u003d cs.build()",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:35.182",
+      "dateUpdated": "2020-02-26 19:14:00.429",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -951,9 +967,11 @@
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -964,7 +982,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003danonymous_graph_45,N\u003d6,E\u003d8,created\u003d1582464276676]"
+            "data": "PgxGraph[name\u003danonymous_graph_60,N\u003d6,E\u003d8,created\u003d1582744441051]"
           }
         ]
       },
@@ -972,15 +990,15 @@
       "jobName": "paragraph_1582463310355_-1418710576",
       "id": "20190510-104938_115727887",
       "dateCreated": "2020-02-23 13:08:30.355",
-      "dateStarted": "2020-02-23 13:24:35.304",
-      "dateFinished": "2020-02-23 13:24:36.868",
+      "dateStarted": "2020-02-26 19:14:00.487",
+      "dateFinished": "2020-02-26 19:14:01.106",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "sg.queryPgql(\"\"\"\n  SELECT a.component, COUNT(a.account_no), MAX(a.account_no)\n  MATCH (a)\n  GROUP BY a.component\n  ORDER BY a.component\n\"\"\")",
+      "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT a.component, COUNT(a.account_no), MAX(a.account_no)\n  MATCH (a)\n  GROUP BY a.component\n  ORDER BY a.component\n\"\"\")",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:24:40.180",
+      "dateUpdated": "2020-02-26 19:14:29.814",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -988,7 +1006,7 @@
           "0": {
             "graph": {
               "mode": "table",
-              "height": 118.0,
+              "height": 140.0,
               "optionOpen": false,
               "setting": {
                 "table": {
@@ -1022,7 +1040,8 @@
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -1041,15 +1060,15 @@
       "jobName": "paragraph_1582463310358_1142726119",
       "id": "20190510-104936_553977665",
       "dateCreated": "2020-02-23 13:08:30.358",
-      "dateStarted": "2020-02-23 13:24:40.283",
-      "dateFinished": "2020-02-23 13:24:40.596",
+      "dateStarted": "2020-02-26 19:14:03.794",
+      "dateFinished": "2020-02-26 19:14:03.993",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Recommendation",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:08:30.361",
+      "dateUpdated": "2020-02-26 19:14:35.602",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1060,7 +1079,8 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": true,
+        "fontSize": 9.0
       },
       "settings": {
         "params": {},
@@ -1079,20 +1099,22 @@
       "jobName": "paragraph_1582463310360_1730736159",
       "id": "20190328-164638_277149599",
       "dateCreated": "2020-02-23 13:08:30.360",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2020-02-26 19:14:35.601",
+      "dateFinished": "2020-02-26 19:14:35.623",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "sg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027purchased\u0027\"))",
+      "text": "%pgx\nsg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027purchased\u0027\"))",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:22:03.223",
+      "dateUpdated": "2020-02-26 19:14:46.293",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -1110,7 +1132,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dsub-graph_26,N\u003d9,E\u003d11,created\u003d1582464123634]"
+            "data": "PgxGraph[name\u003dsub-graph_62,N\u003d9,E\u003d11,created\u003d1582744486600]"
           }
         ]
       },
@@ -1118,15 +1140,15 @@
       "jobName": "paragraph_1582463310361_-886448301",
       "id": "20190328-164719_412230931",
       "dateCreated": "2020-02-23 13:08:30.361",
-      "dateStarted": "2020-02-23 13:22:03.312",
-      "dateFinished": "2020-02-23 13:22:03.719",
+      "dateStarted": "2020-02-26 19:14:46.367",
+      "dateFinished": "2020-02-26 19:14:46.707",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "CS \u003d sg.createChangeSet()\nRS \u003d sg.queryPgql(\"SELECT a, x WHERE (a)-[:purchased]-\u003e(x)\")\ni \u003d 1\nfor (r in RS) {\n    a \u003d r.getVertex(1).getId()\n    x \u003d r.getVertex(2).getId()\n    CS.addEdge(x, a).setLabel(\"purchased_by\")\n    i++\n}\nsg \u003d CS.build()\nsg.queryPgql(\"\"\"\n  SELECT ID(r), a.account_no, x.name\n  MATCH (a)\u003c-[r:purchased_by]-(x)\n\"\"\")",
+      "text": "%pgx\nCS \u003d sg.createChangeSet()\nRS \u003d sg.queryPgql(\"SELECT a, x WHERE (a)-[:purchased]-\u003e(x)\")\ni \u003d 1\nfor (r in RS) {\n    a \u003d r.getVertex(1).getId()\n    x \u003d r.getVertex(2).getId()\n    CS.addEdge(x, a).setLabel(\"purchased_by\")\n    i++\n}\nsg \u003d CS.build()\nsg.queryPgql(\"\"\"\n  SELECT ID(r), a.account_no, x.name\n  MATCH (a)\u003c-[r:purchased_by]-(x)\n\"\"\")",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:22:54.500",
+      "dateUpdated": "2020-02-26 19:15:07.391",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1169,7 +1191,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -1180,7 +1203,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "ID(r)\ta.account_no\tx.name\n22\txxx-yyy-201\tApple Store\n-9223372036854775808\txxx-yyy-201\tApple Store\n11\txxx-yyy-201\tApple Store\n23\txxx-yyy-201\tPC Paradise\n-9223372036854775807\txxx-yyy-201\tPC Paradise\n12\txxx-yyy-201\tPC Paradise\n24\txxx-yyy-202\tApple Store\n-9223372036854775806\txxx-yyy-202\tApple Store\n13\txxx-yyy-202\tApple Store\n25\txxx-yyy-202\tPC Paradise\n-9223372036854775805\txxx-yyy-202\tPC Paradise\n14\txxx-yyy-202\tPC Paradise\n26\txxx-yyy-202\tAsia Books\n-9223372036854775804\txxx-yyy-202\tAsia Books\n15\txxx-yyy-202\tAsia Books\n27\txxx-yyy-203\tApple Store\n-9223372036854775803\txxx-yyy-203\tApple Store\n16\txxx-yyy-203\tApple Store\n28\txxx-yyy-203\tPC Paradise\n-9223372036854775802\txxx-yyy-203\tPC Paradise\n17\txxx-yyy-203\tPC Paradise\n29\txxx-yyy-203\tKindle Store\n-9223372036854775801\txxx-yyy-203\tKindle Store\n18\txxx-yyy-203\tKindle Store\n30\txxx-yyy-204\tKindle Store\n-9223372036854775800\txxx-yyy-204\tKindle Store\n19\txxx-yyy-204\tKindle Store\n31\txxx-yyy-204\tAsia Books\n-9223372036854775799\txxx-yyy-204\tAsia Books\n20\txxx-yyy-204\tAsia Books\n32\txxx-yyy-204\tABC Travel\n-9223372036854775798\txxx-yyy-204\tABC Travel\n21\txxx-yyy-204\tABC Travel"
+            "data": "ID(r)\ta.account_no\tx.name\n11\txxx-yyy-201\tApple Store\n12\txxx-yyy-201\tPC Paradise\n13\txxx-yyy-202\tApple Store\n14\txxx-yyy-202\tPC Paradise\n15\txxx-yyy-202\tAsia Books\n16\txxx-yyy-203\tApple Store\n17\txxx-yyy-203\tPC Paradise\n18\txxx-yyy-203\tKindle Store\n19\txxx-yyy-204\tKindle Store\n20\txxx-yyy-204\tAsia Books\n21\txxx-yyy-204\tABC Travel"
           }
         ]
       },
@@ -1188,27 +1211,29 @@
       "jobName": "paragraph_1582463310365_1687717399",
       "id": "20190328-164743_692256517",
       "dateCreated": "2020-02-23 13:08:30.366",
-      "dateStarted": "2020-02-23 13:22:54.593",
-      "dateFinished": "2020-02-23 13:22:57.125",
+      "dateStarted": "2020-02-26 19:15:07.454",
+      "dateFinished": "2020-02-26 19:15:08.197",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "vertexSet \u003d sg.createVertexSet()\nvertexSet.addAll(201)\nppr \u003d analyst.personalizedPagerank(sg, vertexSet)",
+      "text": "%pgx\nvertexSet \u003d sg.createVertexSet()\nvertexSet.addAll(201)\nanalyst.personalizedPagerank(sg, vertexSet)",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:23:25.726",
+      "dateUpdated": "2020-02-26 19:15:17.634",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
-          "completionKey": "TAB"
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -1219,7 +1244,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "VertexProperty[name\u003dpagerank,type\u003ddouble,graph\u003danonymous_graph_37]"
+            "data": "VertexProperty[name\u003dpagerank,type\u003ddouble,graph\u003danonymous_graph_67]"
           }
         ]
       },
@@ -1227,15 +1252,15 @@
       "jobName": "paragraph_1582463310372_-1335121912",
       "id": "20190328-164812_1574533639",
       "dateCreated": "2020-02-23 13:08:30.372",
-      "dateStarted": "2020-02-23 13:23:25.821",
-      "dateFinished": "2020-02-23 13:23:27.016",
+      "dateStarted": "2020-02-26 19:15:13.138",
+      "dateFinished": "2020-02-26 19:15:13.503",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "sg.queryPgql(\"\"\"\n  SELECT ID(x), x.name, x.pagerank\n  MATCH (x)\n  WHERE x.type \u003d \u0027merchant\u0027\n    AND NOT EXISTS (\n      SELECT *\n      MATCH (x)-[:purchased_by]-\u003e(a)\n      WHERE ID(a) \u003d 201\n    )\n  ORDER BY x.pagerank DESC\n\"\"\")",
+      "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT ID(x), x.name, x.pagerank\n  MATCH (x)\n  WHERE x.type \u003d \u0027merchant\u0027\n    AND NOT EXISTS (\n      SELECT *\n      MATCH (x)-[:purchased_by]-\u003e(a)\n      WHERE ID(a) \u003d 201\n    )\n  ORDER BY x.pagerank DESC\n\"\"\")",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:23:29.103",
+      "dateUpdated": "2020-02-26 19:15:51.391",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1278,7 +1303,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -1289,7 +1315,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "ID(x)\tx.name\tx.pagerank\n303\tKindle Store\t0.049326401333027445\n304\tAsia Books\t0.049326401333027445\n305\tABC Travel\t0.01565535511504672"
+            "data": "ID(x)\tx.name\tx.pagerank\n303\tKindle Store\t0.04932640133302745\n304\tAsia Books\t0.04932640133302745\n305\tABC Travel\t0.01565535511504672"
           }
         ]
       },
@@ -1297,24 +1323,28 @@
       "jobName": "paragraph_1582463310375_-308906140",
       "id": "20190328-164916_532250489",
       "dateCreated": "2020-02-23 13:08:30.375",
-      "dateStarted": "2020-02-23 13:23:29.236",
-      "dateFinished": "2020-02-23 13:23:30.110",
+      "dateStarted": "2020-02-26 19:15:21.952",
+      "dateFinished": "2020-02-26 19:15:22.182",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:08:30.381",
+      "dateUpdated": "2020-02-26 19:13:26.877",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "scala",
-          "editOnDblClick": false
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "results": {},
-        "enabled": true
+        "enabled": true,
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -1333,7 +1363,11 @@
   "id": "2F3X6GXFY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "pgx:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false
   },

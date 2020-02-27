@@ -12,7 +12,7 @@
       "pgx.baseUrl": {
         "envName": "PGX_SERVER_BASEURL",
         "propertyName": "pgx.baseUrl",
-        "defaultValue": "http://pg-server:7007",
+        "defaultValue": "http://graph-server:7007",
         "description": "Base URL of a running PGX server this interpreter should connect to"
       },
       "pgx.trustStore": {
