@@ -1,0 +1,71 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pgx\ng \u003d session.readGraphWithProperties(\"/graphs/hr/hr-pg.json\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-03-02 21:30:20.625",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "PgxGraph[name\u003dhr,N\u003d215,E\u003d415,created\u003d1583184627240]"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1583183952195_-832498701",
+      "id": "20200302-211912_1378960932",
+      "dateCreated": "2020-03-02 21:19:12.195",
+      "dateStarted": "2020-03-02 21:30:20.698",
+      "dateFinished": "2020-03-02 21:30:28.627",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-03-02 21:20:41.864",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1583184041859_-28530037",
+      "id": "20200302-212041_1026051053",
+      "dateCreated": "2020-03-02 21:20:41.859",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Untitled Note 1",
+  "id": "2F37PSPW2",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "pgx:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

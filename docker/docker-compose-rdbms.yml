@@ -13,7 +13,14 @@ services:
      - ./conf/pgx-rdbms.conf:/etc/oracle/graph/pgx.conf
      - ./conf/server.conf:/etc/oracle/graph/server.conf
      - ./keystore.p12:/opt/oracle/keystore.p12
-    command: start-server --secret-store /opt/oracle/keystore.p12
+    command: >
+      expect -c "
+        set timeout 3
+        spawn start-server --secret-store /opt/oracle/keystore.p12
+        expect \"enter password for keystore /opt/oracle/keystore.p12:\"
+        send \"oracle\n\"
+        interact
+      "
     stdin_open: true
     tty: true
   graph-client:
