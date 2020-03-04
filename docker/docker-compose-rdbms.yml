@@ -51,5 +51,6 @@ services:
       - "1521:1521"
     volumes:
       - ../graphs:/graphs
+      - ./rdbms/scripts:/home/oracle/scripts
     environment:
       - ORACLE_PWD=Welcome1

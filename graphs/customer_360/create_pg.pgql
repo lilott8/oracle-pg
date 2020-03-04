@@ -1,0 +1,10 @@
+CREATE PROPERTY GRAPH customer_360
+  VERTEX TABLES (
+    customer PROPERTIES ALL COLUMNS EXCEPT(id),
+    account PROPERTIES ALL COLUMNS EXCEPT(id)
+  )
+  EDGE TABLES (
+    owned_by
+      SOURCE KEY(from_id) REFERENCES account
+      DESTINATION KEY(to_id) REFERENCES customer
+  )
