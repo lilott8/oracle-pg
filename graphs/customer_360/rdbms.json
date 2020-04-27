@@ -21,9 +21,7 @@
     {"name":"amount", "type":"integer"},
     {"name":"date", "type":"string"}
   ],
-  "partition_while_loading":"by_label",
   "loading":{
-    "load_vertex_labels":true,
     "load_edge_label":true
   }
 }
