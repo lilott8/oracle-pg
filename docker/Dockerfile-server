@@ -1,6 +1,9 @@
 FROM oracle/openjdk:8
-COPY ./tmp/oracle-graph-20.1.0.x86_64.rpm /tmp
-RUN rpm -ivh /tmp/oracle-graph-20.1.0.x86_64.rpm
+ARG VERSION
+RUN echo ${VERSION}
+
+COPY ./tmp/oracle-graph-${VERSION}.x86_64.rpm /tmp
+RUN rpm -ivh /tmp/oracle-graph-${VERSION}.x86_64.rpm
 RUN yum install -y expect
 EXPOSE 7007
 ENV PATH=$PATH:/opt/oracle/graph/pgx/bin
