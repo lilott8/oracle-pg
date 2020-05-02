@@ -26,7 +26,6 @@ services:
     volumes:
      - ../graphs:/graphs
      - ./keystore.p12:/opt/oracle/keystore.p12
-    stdin_open: true
     tty: true
   zeppelin:
     image: apache/zeppelin:0.8.1

@@ -7,16 +7,21 @@
   "max_num_connections":8,
   "name":"customer_360",
   "vertex_props": [
-    {"name":"TYPE", "type":"string"},
-    {"name":"NAME", "type":"string"},
-    {"name":"ACCOUNT_NO", "type":"string"}
+    {"name":"type", "type":"string"},
+    {"name":"name", "type":"string"},
+    {"name":"age", "type":"integer"},
+    {"name":"location", "type":"string"},
+    {"name":"gender", "type":"string"},
+    {"name":"student", "type":"string"},
+    {"name":"account_no", "type":"string"},
+    {"name":"balance", "type":"integer"}
   ],
   "edge_props": [
-    {"name":"SINCE", "type":"string"}
+    {"name":"since", "type":"string"},
+    {"name":"amount", "type":"integer"},
+    {"name":"date", "type":"string"}
   ],
-  "partition_while_loading":"by_label",
   "loading":{
-    "load_vertex_labels":true,
     "load_edge_label":true
   }
 }
