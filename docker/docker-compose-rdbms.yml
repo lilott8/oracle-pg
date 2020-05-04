@@ -1,3 +1,7 @@
+#
+# Notes
+# - depends_on is not effective enough to control the dependency between server processes
+#
 version: '3'
 services:
   graph-server:
@@ -8,6 +12,8 @@ services:
     container_name: graph-server
     ports:
       - "7007:7007"
+    depends_on:
+      - "oracle-db"
     volumes:
      - ../graphs:/graphs
      - ./conf/pgx-rdbms.conf:/etc/oracle/graph/pgx.conf
@@ -38,6 +44,8 @@ services:
     container_name: zeppelin
     ports:
       - "8080:8080"
+    depends_on:
+      - "graph-server"
     volumes:
       - ../graphs:/graphs
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
