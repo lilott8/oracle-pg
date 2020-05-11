@@ -1,7 +1,6 @@
-#
 # Notes
-# - depends_on is not effective enough to control the dependency between server processes
-#
+# - depends_on is not effective enough to control the dependency
+
 version: '3'
 services:
   graph-server:
