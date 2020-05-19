@@ -1,10 +1,10 @@
-DROP TABLE customer_360.account;
-DROP TABLE customer_360.customer;
-DROP TABLE customer_360.merchant;
-DROP TABLE customer_360.owned_by;
-DROP TABLE customer_360.parent_of;
-DROP TABLE customer_360.purchased;
-DROP TABLE customer_360.transfer;
+-- DROP TABLE customer_360.account;
+-- DROP TABLE customer_360.customer;
+-- DROP TABLE customer_360.merchant;
+-- DROP TABLE customer_360.owned_by;
+-- DROP TABLE customer_360.parent_of;
+-- DROP TABLE customer_360.purchased;
+-- DROP TABLE customer_360.transfer;
 
 CREATE TABLE customer_360.account (
   id NUMBER NOT NULL
@@ -107,3 +107,5 @@ INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (204,201,
 INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (202,203,100,'2018-10-10');
 INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (202,201,300,'2018-10-10');
 COMMIT;
+
+EXIT
