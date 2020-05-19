@@ -1,0 +1,12 @@
+--DROP USER paysim2;
+
+CREATE USER paysim IDENTIFIED BY paysim
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp;
+
+ALTER USER paysim QUOTA UNLIMITED ON users;
+
+GRANT connect TO paysim;
+GRANT resource TO paysim;
+
+EXIT
