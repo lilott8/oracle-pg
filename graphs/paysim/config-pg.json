@@ -1,0 +1,19 @@
+{
+  "format":"pg",
+  "db_engine":"rdbms",
+  "jdbc_url":"jdbc:oracle:thin:@oracle-db:1521/orclpdb1",
+  "username":"paysim",
+  "keystore_alias":"database1",
+  "max_num_connections":8,
+  "name":"paysim",
+  "vertex_props": [
+    { "name": "name", "type": "string" }
+  ],
+  "edge_props": [
+    { "name": "amount", "type": "double" },
+    { "name": "step", "type": "integer" }
+  ],
+  "loading":{
+    "load_edge_label":true
+  }
+}

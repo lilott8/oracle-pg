@@ -1,12 +1,11 @@
---DROP USER paysim2;
-
-CREATE USER paysim IDENTIFIED BY paysim
+CREATE USER paysim IDENTIFIED BY Welcome1
 DEFAULT TABLESPACE users
 TEMPORARY TABLESPACE temp;
 
 ALTER USER paysim QUOTA UNLIMITED ON users;
 
-GRANT connect TO paysim;
-GRANT resource TO paysim;
+GRANT CONNECT TO paysim;
+GRANT RESOURCE TO paysim;
+GRANT CREATE VIEW TO paysim;
 
 EXIT
