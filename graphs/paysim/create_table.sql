@@ -1,4 +1,3 @@
---DROP TABLE paysim;
 CREATE TABLE paysim (
   step NUMBER(3)
 , type VARCHAR2(255)

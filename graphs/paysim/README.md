@@ -11,10 +11,11 @@ Create database user and `paysim` table, then load the data.
     $ sqlplus paysim/Welcome1@orclpdb1 @create_table.sql
     $ sqlldr paysim/Welcome1@orclpdb1 sqlldr.ctl sqlldr.log sqlldr.bad direct=true
 
+For creating nodes, `customer` table have to be created.
 
     $ sqlplus paysim/Welcome1@orclpdb1 @create_view.sql
 
-Create graph on database.
+Create graph on database. (However, this loading has performance issue.)
 
     $ docker exec -it graph-client opg-jshell
 
@@ -23,4 +24,11 @@ Create graph on database.
     > conn.setAutoCommit(false)
     > var pgql = PgqlConnection.getConnection(conn)
     > pgql.prepareStatement(Files.readString(Paths.get("/graphs/paysim/create_pg.pgql"))).execute()
-$xx ==> false
+    $xx ==> false
+
+Alternatively, directly load from tables.
+
+    $ docker exec -it graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
+    enter password for keystore /opt/oracle/keystore.p12: [oracle]
+    
+    > var g = session.readGraphWithProperties("/graphs/paysim/config-tables.json");
