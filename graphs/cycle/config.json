@@ -3,14 +3,14 @@
   "uri":"1k-graph.csv",
   "vertex_id_type":"long",
   "vertex_labels":false,
-  "edge_label":false,
+  "edge_label":true,
   "vertex_props":[
   ],
   "edge_props":[
   ],
   "loading_options": {
     "load_vertex_labels":false,
-    "load_edge_label":false
+    "load_edge_label":true
   },
   "separator":","
 }
