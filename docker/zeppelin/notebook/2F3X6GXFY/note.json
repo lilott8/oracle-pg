@@ -647,7 +647,7 @@
     {
       "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT a.account_no, a.pagerank\n  MATCH (a)\n  ORDER BY a.pagerank DESC\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-05-11 09:20:22.851",
+      "dateUpdated": "2020-05-27 00:49:42.417",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1434,11 +1434,7 @@
   "id": "2F3X6GXFY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "pgx:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "simple",
