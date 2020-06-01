@@ -27,7 +27,8 @@
       "destination_vertex_provider":"Customer",
       "props":[
         {"name":"AMOUNT", "type":"double"},
-        {"name":"STEP", "type":"integer"}
+        {"name":"STEP", "type":"integer"},
+        {"name":"IS_FRAUD", "type":"boolean"}
       ]
     } 
   ]
