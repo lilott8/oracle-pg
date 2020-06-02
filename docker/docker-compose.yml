@@ -15,6 +15,8 @@ services:
      - ./conf/pgx.conf:/etc/oracle/graph/pgx.conf
      - ./conf/server.conf:/etc/oracle/graph/server.conf
      - ./keystore.p12:/opt/oracle/keystore.p12
+    networks:
+      - oracle-pg
   graph-client:
     build:
       context: .
@@ -26,6 +28,8 @@ services:
     volumes:
      - ../graphs:/graphs
      - ./keystore.p12:/opt/oracle/keystore.p12
+    networks:
+      - oracle-pg
     tty: true
   zeppelin:
     image: apache/zeppelin:0.8.1
@@ -35,5 +39,10 @@ services:
     volumes:
       - ../graphs:/graphs
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
+      - ./zeppelin/conf/interpreter.json:/zeppelin/conf/interpreter.json
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
+    networks:
+      - oracle-pg
+networks:
+  oracle-pg:
