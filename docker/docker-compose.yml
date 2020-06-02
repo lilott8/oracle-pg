@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile-server
       args:
-       - VERSION=20.1.0
-    image: graph-server:20.1
+       - VERSION=20.2.0
+    image: graph-server:20.2
     container_name: graph-server
     ports:
       - "7007:7007"
@@ -20,8 +20,8 @@ services:
       context: .
       dockerfile: Dockerfile-client
       args:
-       - VERSION=20.1.0
-    image: graph-client:20.1
+       - VERSION=20.2.0
+    image: graph-client:20.2
     container_name: graph-client
     volumes:
      - ../graphs:/graphs
