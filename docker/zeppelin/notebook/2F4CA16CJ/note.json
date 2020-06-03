@@ -992,22 +992,6 @@
       "dateFinished": "2020-05-11 09:19:22.360",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%pgx\n",
-      "user": "anonymous",
-      "dateUpdated": "2020-05-11 09:19:20.682",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1589188760677_-1980625001",
-      "id": "20200511-091920_1428600289",
-      "dateCreated": "2020-05-11 09:19:20.678",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Flight Network",
@@ -1015,7 +999,9 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "pgx:shared_process": []
+    "md:shared_process": [],
+    "pgx:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

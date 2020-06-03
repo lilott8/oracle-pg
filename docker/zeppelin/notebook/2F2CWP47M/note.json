@@ -1483,34 +1483,6 @@
       "dateFinished": "2020-02-23 14:28:36.279",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%pgx\n",
-      "user": "anonymous",
-      "dateUpdated": "2020-02-23 14:28:36.311",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB"
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1582467009698_-863073360",
-      "id": "20190818-155351_1933273514",
-      "dateCreated": "2020-02-23 14:10:09.698",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Tax Fraud",
@@ -1519,7 +1491,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "pgx:shared_process": []
+    "pgx:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
