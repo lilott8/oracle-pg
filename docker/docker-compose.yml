@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile-server
       args:
-       - VERSION=20.2.0
-    image: graph-server:20.2
+       - VERSION=20.1.0
+    image: graph-server:20.1
     container_name: graph-server
     ports:
       - "7007:7007"
@@ -15,17 +15,21 @@ services:
      - ./conf/pgx.conf:/etc/oracle/graph/pgx.conf
      - ./conf/server.conf:/etc/oracle/graph/server.conf
      - ./keystore.p12:/opt/oracle/keystore.p12
+    networks:
+      - oracle-pg
   graph-client:
     build:
       context: .
       dockerfile: Dockerfile-client
       args:
-       - VERSION=20.2.0
-    image: graph-client:20.2
+       - VERSION=20.1.0
+    image: graph-client:20.1
     container_name: graph-client
     volumes:
      - ../graphs:/graphs
      - ./keystore.p12:/opt/oracle/keystore.p12
+    networks:
+      - oracle-pg
     tty: true
   zeppelin:
     image: apache/zeppelin:0.8.1
@@ -35,5 +39,10 @@ services:
     volumes:
       - ../graphs:/graphs
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
+      - ./zeppelin/conf/interpreter.json:/zeppelin/conf/interpreter.json
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
+    networks:
+      - oracle-pg
+networks:
+  oracle-pg:
