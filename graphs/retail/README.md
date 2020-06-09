@@ -1,4 +1,4 @@
-# paysim
+# Online Retail
 
 Run a bash console on `oracle-db` container.
 
@@ -13,7 +13,7 @@ Create database user and `paysim` table, then load the data.
 
 For creating nodes, `customer` table have to be created.
 
-    $ sqlplus retail/Welcome1@orclpdb1 @create_view.sql
+    $ sqlplus retail/Welcome1@orclpdb1 @create_table_normalized.sql
 
 Create graph on database. (However, this loading has performance issue.)
 
