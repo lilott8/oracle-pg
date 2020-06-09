@@ -1,5 +1,9 @@
 # Online Retail
 
+Download dataset (an Excel file) and save it as `data.csv` in CSV format.
+
+* http://archive.ics.uci.edu/ml/datasets/online+retail#
+
 Run a bash console on `oracle-db` container.
 
     $ docker exec -it oracle-db /bin/bash
@@ -26,9 +30,3 @@ Create graph on database. (However, this loading has performance issue.)
     > pgql.prepareStatement(Files.readString(Paths.get("/graphs/retail/create_pg.pgql"))).execute()
     $xx ==> false
 
-Alternatively, directly load from tables.
-
-    $ docker exec -it graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
-    enter password for keystore /opt/oracle/keystore.p12: [oracle]
-    
-    > var g = session.readGraphWithProperties("/graphs/paysim/config-tables.json");
