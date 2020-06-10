@@ -30,3 +30,9 @@ Create graph on database. (However, this loading has performance issue.)
     > pgql.prepareStatement(Files.readString(Paths.get("/graphs/retail/create_pg.pgql"))).execute()
     $xx ==> false
 
+Alternatively, directly load from tables.
+
+    $ docker exec -it graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
+    enter password for keystore /opt/oracle/keystore.p12: [oracle]
+
+    > var g = session.readGraphWithProperties("/graphs/retail/config-tables.json");
