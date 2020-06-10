@@ -3,7 +3,7 @@ CREATE TABLE customers (
 , CONSTRAINT customers_pk PRIMARY KEY (customer_id)
 ) AS
 SELECT DISTINCT
-  customer_id
+  'cust_' || customer_id
 FROM transactions
 WHERE customer_id IS NOT NULL
 ;
@@ -16,7 +16,7 @@ CREATE TABLE products (
 , CONSTRAINT product_pk PRIMARY KEY (stock_code)
 ) AS
 SELECT DISTINCT
-  stock_code
+  'prod_' || stock_code
 FROM transactions
 WHERE stock_code IS NOT NULL
 ;
@@ -32,7 +32,11 @@ CREATE TABLE purchases (
 , unit_price
 ) AS
 SELECT
-  ROWNUM AS purchase_id, stock_code, customer_id, quantity, unit_price
+  ROWNUM AS purchase_id
+, 'prod_' || stock_code
+, 'cust_' || customer_id
+, quantity
+, unit_price
 FROM transactions
 WHERE
     stock_code IS NOT NULL

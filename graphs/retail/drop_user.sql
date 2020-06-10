@@ -1,0 +1,2 @@
+DROP USER retail CASCADE;
+EXIT
