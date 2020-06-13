@@ -11,6 +11,7 @@
       "key_column":"CUSTOMER_ID",
       "key_type":"string",
       "props":[
+        {"name":"country", "type":"string"}
       ]
     },
     {
@@ -20,12 +21,13 @@
       "key_column":"STOCK_CODE",
       "key_type":"string",
       "props":[
+        {"name":"description", "type":"string"}
       ]
     }
   ],
   "edge_providers": [
     {
-      "name":"purchased",
+      "name":"has_purchased",
       "format":"rdbms",
       "database_table_name":"PURCHASES",
       "key_column":"PURCHASE_ID",
@@ -34,9 +36,23 @@
       "source_vertex_provider":"Customer",
       "destination_vertex_provider":"Product",
       "props":[
-        {"name":"QUANTITY", "type":"integer"},
-        {"name":"UNIT_PRICE", "type":"double"}
+        {"name":"quantity", "type":"integer"},
+        {"name":"unit_price", "type":"double"}
       ]
-    } 
+    },
+    {
+      "name":"purchased_by",
+      "format":"rdbms",
+      "database_table_name":"PURCHASES",
+      "key_column":"PURCHASE_ID",
+      "source_column":"STOCK_CODE",
+      "destination_column":"CUSTOMER_ID",
+      "source_vertex_provider":"Product",
+      "destination_vertex_provider":"Customer",
+      "props":[
+        {"name":"quantity", "type":"integer"},
+        {"name":"unit_price", "type":"double"}
+      ]
+    }
   ]
 }
