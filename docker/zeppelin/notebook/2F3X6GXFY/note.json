@@ -45,7 +45,7 @@
     {
       "text": "%pgx\ng \u003d session.getGraph(\"Customer 360\")",
       "user": "anonymous",
-      "dateUpdated": "2020-05-11 09:19:54.678",
+      "dateUpdated": "2020-06-11 07:15:19.449",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dCustomer 360,N\u003d15,E\u003d24,created\u003d1589188520959]"
+            "data": "PgxGraph[name\u003dCustomer 360,N\u003d15,E\u003d24,created\u003d1591858655427]"
           }
         ]
       },
@@ -76,8 +76,8 @@
       "jobName": "paragraph_1582463310204_1999191484",
       "id": "20190402-164753_989376579",
       "dateCreated": "2020-02-23 13:08:30.204",
-      "dateStarted": "2020-05-11 09:19:55.206",
-      "dateFinished": "2020-05-11 09:19:55.512",
+      "dateStarted": "2020-06-11 07:15:19.564",
+      "dateFinished": "2020-06-11 07:15:21.952",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -647,7 +647,7 @@
     {
       "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT a.account_no, a.pagerank\n  MATCH (a)\n  ORDER BY a.pagerank DESC\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-05-21 07:30:19.355",
+      "dateUpdated": "2020-06-13 07:42:33.927",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1137,7 +1137,7 @@
     {
       "text": "%pgx\nsg \u003d g.filter(new EdgeFilter(\"edge.label()\u003d\u0027purchased\u0027\"))",
       "user": "anonymous",
-      "dateUpdated": "2020-04-28 15:54:51.182",
+      "dateUpdated": "2020-06-11 07:15:38.283",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1162,7 +1162,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dsub-graph_24,N\u003d9,E\u003d11,created\u003d1588089291862]"
+            "data": "PgxGraph[name\u003dsub-graph_9,N\u003d9,E\u003d11,created\u003d1591859739684]"
           }
         ]
       },
@@ -1170,8 +1170,8 @@
       "jobName": "paragraph_1582463310361_-886448301",
       "id": "20190328-164719_412230931",
       "dateCreated": "2020-02-23 13:08:30.361",
-      "dateStarted": "2020-04-28 15:54:51.373",
-      "dateFinished": "2020-04-28 15:54:51.991",
+      "dateStarted": "2020-06-11 07:15:38.380",
+      "dateFinished": "2020-06-11 07:15:40.843",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1219,7 +1219,7 @@
     {
       "text": "%pgx\nCS \u003d sg.createChangeSet()\nRS \u003d sg.queryPgql(\"SELECT a, x WHERE (a)-[:purchased]-\u003e(x)\")\ni \u003d 1\nfor (r in RS) {\n    a \u003d r.getVertex(1).getId()\n    x \u003d r.getVertex(2).getId()\n    CS.addEdge(x, a).setLabel(\"purchased_by\")\n    i++\n}\nsg \u003d CS.build()\nsg.queryPgql(\"\"\"\n  SELECT ID(r), a.account_no, x.name\n  MATCH (a)\u003c-[r:purchased_by]-(x)\n\"\"\")",
       "user": "anonymous",
-      "dateUpdated": "2020-04-28 15:55:38.927",
+      "dateUpdated": "2020-06-11 07:15:58.495",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1274,7 +1274,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "ID(r)\ta.account_no\tx.name\n11\txxx-yyy-201\tApple Store\n12\txxx-yyy-201\tPC Paradise\n13\txxx-yyy-202\tApple Store\n14\txxx-yyy-202\tPC Paradise\n15\txxx-yyy-202\tAsia Books\n16\txxx-yyy-203\tApple Store\n17\txxx-yyy-203\tPC Paradise\n18\txxx-yyy-203\tKindle Store\n19\txxx-yyy-204\tKindle Store\n20\txxx-yyy-204\tAsia Books\n21\txxx-yyy-204\tABC Travel"
+            "data": "ID(r)\ta.account_no\tx.name\n11\txxx-yyy-201\tApple Store\n12\txxx-yyy-201\tPC Paradise\n13\txxx-yyy-204\tAsia Books\n14\txxx-yyy-204\tABC Travel\n15\txxx-yyy-204\tKindle Store\n16\txxx-yyy-202\tApple Store\n17\txxx-yyy-202\tAsia Books\n18\txxx-yyy-202\tPC Paradise\n19\txxx-yyy-203\tApple Store\n20\txxx-yyy-203\tKindle Store\n21\txxx-yyy-203\tPC Paradise"
           }
         ]
       },
@@ -1282,15 +1282,15 @@
       "jobName": "paragraph_1582463310365_1687717399",
       "id": "20190328-164743_692256517",
       "dateCreated": "2020-02-23 13:08:30.366",
-      "dateStarted": "2020-04-28 15:55:39.112",
-      "dateFinished": "2020-04-28 15:55:41.094",
+      "dateStarted": "2020-06-11 07:15:58.683",
+      "dateFinished": "2020-06-11 07:16:00.031",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pgx\nvertexSet \u003d sg.createVertexSet()\nrs \u003d sg.queryPgql(\"SELECT a MATCH (a) WHERE a.account_no \u003d \u0027xxx-yyy-201\u0027\")\nfor (r in rs) {\n  v \u003d r.getVertex(1)\n  vertexSet.add(v)\n  analyst.personalizedPagerank(sg, vertexSet)\n}",
       "user": "anonymous",
-      "dateUpdated": "2020-04-28 15:56:11.648",
+      "dateUpdated": "2020-06-11 07:16:19.256",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1323,15 +1323,15 @@
       "jobName": "paragraph_1582463310372_-1335121912",
       "id": "20190328-164812_1574533639",
       "dateCreated": "2020-02-23 13:08:30.372",
-      "dateStarted": "2020-04-28 15:56:11.783",
-      "dateFinished": "2020-04-28 15:56:13.476",
+      "dateStarted": "2020-06-11 07:16:19.323",
+      "dateFinished": "2020-06-11 07:16:20.754",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT ID(x), x.name, x.pagerank\n  MATCH (x)\n  WHERE x.type \u003d \u0027merchant\u0027\n    AND NOT EXISTS (\n      SELECT *\n      MATCH (x)-[:purchased_by]-\u003e(a)\n      WHERE a.account_no \u003d \u0027xxx-yyy-201\u0027\n    )\n  ORDER BY x.pagerank DESC\n\"\"\")",
       "user": "anonymous",
-      "dateUpdated": "2020-04-28 15:56:20.801",
+      "dateUpdated": "2020-06-11 07:16:23.838",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1386,7 +1386,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "ID(x)\tx.name\tx.pagerank\n303\tKindle Store\t0.04932640133302745\n304\tAsia Books\t0.04932640133302745\n305\tABC Travel\t0.01565535511504672"
+            "data": "ID(x)\tx.name\tx.pagerank\n6541727421521309923\tAsia Books\t0.04932640133302745\n8574591124594145469\tKindle Store\t0.04932640133302745\n8664546881222905044\tABC Travel\t0.01565535511504672"
           }
         ]
       },
@@ -1394,8 +1394,8 @@
       "jobName": "paragraph_1582463310375_-308906140",
       "id": "20190328-164916_532250489",
       "dateCreated": "2020-02-23 13:08:30.375",
-      "dateStarted": "2020-04-28 15:56:21.015",
-      "dateFinished": "2020-04-28 15:56:22.136",
+      "dateStarted": "2020-06-11 07:16:23.947",
+      "dateFinished": "2020-06-11 07:16:26.849",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
