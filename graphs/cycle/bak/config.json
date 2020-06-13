@@ -1,16 +1,16 @@
 {
   "format":"edge_list",
-  "uri":"edges.csv",
+  "uri":"1k-graph.csv",
   "vertex_id_type":"long",
   "vertex_labels":false,
-  "edge_label":true,
+  "edge_label":false,
   "vertex_props":[
   ],
   "edge_props":[
   ],
   "loading_options": {
     "load_vertex_labels":false,
-    "load_edge_label":true
+    "load_edge_label":false
   },
   "separator":","
 }
