@@ -647,7 +647,7 @@
     {
       "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT a.account_no, a.pagerank\n  MATCH (a)\n  ORDER BY a.pagerank DESC\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-06-13 07:42:33.927",
+      "dateUpdated": "2020-06-15 13:36:30.696",
       "config": {
         "tableHide": false,
         "editorSetting": {

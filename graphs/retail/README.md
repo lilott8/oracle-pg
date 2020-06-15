@@ -35,7 +35,7 @@ Restart Zeppelin (or recreating the session from the interpreter settings).
 
 Open Zeppelin (http://localhost:8080) and go to "Online Retail".
 
-***
+---
 
 ## Appendix
 
@@ -55,5 +55,8 @@ Alternatively, directly load from tables.
     $ docker exec -it graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
     enter password for keystore /opt/oracle/keystore.p12: [oracle]
 
-var g = session.readGraphWithProperties("/graphs/retail/config-tables.json");
     > var g = session.readGraphWithProperties("/graphs/retail/config-tables.json");
+
+
+
+

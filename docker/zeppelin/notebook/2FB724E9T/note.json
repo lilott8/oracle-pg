@@ -1,0 +1,307 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pgx\ngraph \u003d session.getGraph(\"Online Retail\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-15 13:31:56.749",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "PgxGraph[name\u003dOnline Retail,N\u003d8258,E\u003d792740,created\u003d1592227883291]"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1592227893489_500957263",
+      "id": "20200615-133133_546539023",
+      "dateCreated": "2020-06-15 13:31:33.489",
+      "dateStarted": "2020-06-15 13:31:56.914",
+      "dateFinished": "2020-06-15 13:32:21.954",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\ngraph.queryPgql(\"\"\"\n  SELECT COUNT(p)\n  MATCH (p:Product)\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-15 13:40:50.894",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "COUNT(p)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "COUNT(p)\n3919"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1592228401907_-1694677359",
+      "id": "20200615-134001_1924995915",
+      "dateCreated": "2020-06-15 13:40:01.907",
+      "dateStarted": "2020-06-15 13:40:45.606",
+      "dateFinished": "2020-06-15 13:40:45.928",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\ngraph.queryPgql(\"\"\"\n  SELECT COUNT(c)\n  MATCH (c:Customer)\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-15 13:41:19.006",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "COUNT(c)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "COUNT(c)\n4339"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1592228454120_-59473965",
+      "id": "20200615-134054_694875407",
+      "dateCreated": "2020-06-15 13:40:54.120",
+      "dateStarted": "2020-06-15 13:41:13.438",
+      "dateFinished": "2020-06-15 13:41:13.808",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\nvertexSet \u003d graph.createVertexSet()\nrs \u003d graph.queryPgql(\"SELECT c MATCH (c:Customer) WHERE ID(c) \u003d \u0027cust_12346\u0027\")\nfor (r in rs) {\n    vertex \u003d r.getVertex(1)\n    vertexSet.add(vertex)\n    analyst.personalizedPagerank(graph, vertexSet)\n}",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-15 13:36:07.017",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(no output)"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1592227916759_1663081338",
+      "id": "20200615-133156_2005042788",
+      "dateCreated": "2020-06-15 13:31:56.759",
+      "dateStarted": "2020-06-15 13:36:07.148",
+      "dateFinished": "2020-06-15 13:36:10.994",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\ngraph.queryPgql(\"\"\"\n  SELECT ID(p), p.pagerank, p.description\n  MATCH (p)\n  WHERE LABEL(p) \u003d \u0027Product\u0027\n    AND NOT EXISTS (\n      SELECT *\n      MATCH (p)-[:purchased_by]-\u003e(c)\n      WHERE ID(c) \u003d \u0027cust_12346\u0027\n    )\n  ORDER BY p.pagerank DESC\n  LIMIT 10\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-15 13:41:37.373",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ID(p)": "string",
+                      "p.pagerank": "string",
+                      "p.description": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "ID(p)\tp.pagerank\tp.description\nprod_85123A\t0.0015133533081014082\tWHITE HANGING HEART T-LIGHT HOLDER\nprod_22423\t0.0014835055494878617\tREGENCY CAKESTAND 3 TIER\nprod_22720\t0.001305311532690463\tSET OF 3 CAKE TINS PANTRY DESIGN \nprod_85099B\t0.0012750857233057892\tJUMBO BAG RED RETROSPOT\nprod_47566\t0.0012119936824340155\tPARTY BUNTING\nprod_84879\t0.0011480554221735284\tASSORTED COLOUR BIRD ORNAMENT\nprod_22993\t0.0011150764948906857\tSET OF 4 PANTRY JELLY MOULDS\nprod_22960\t0.0010589450693713354\tJAM MAKING SET WITH JARS\nprod_22961\t0.0010370349886957043\tJAM MAKING SET PRINTED\nprod_23203\t9.974301371197015E-4\tmailout"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1592228167017_868554623",
+      "id": "20200615-133607_1436961549",
+      "dateCreated": "2020-06-15 13:36:07.017",
+      "dateStarted": "2020-06-15 13:41:37.441",
+      "dateFinished": "2020-06-15 13:41:40.072",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-15 13:39:08.618",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1592228348616_-2108481947",
+      "id": "20200615-133908_161787886",
+      "dateCreated": "2020-06-15 13:39:08.616",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Online Retail",
+  "id": "2FB724E9T",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "pgx:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
