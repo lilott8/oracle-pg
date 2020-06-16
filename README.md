@@ -95,7 +95,7 @@ Connect to the Oracle Database server. See [Appendix 2](#appendix-2) if you get 
 
     $ docker exec -it oracle-db sqlplus sys/Welcome1@orclpdb1 as sysdba
 
-Set max_string_size running [`max_string_size.sql`](https://github.com/ryotayamanaka/oracle-pg/blob/master/docker/rdbms/scripts/max_string_size.sql).
+Set max_string_size running [`max_string_size.sql`](https://github.com/ryotayamanaka/oracle-pg/blob/20.1/docker/rdbms/scripts/max_string_size.sql).
 
     SQL> @/home/oracle/scripts/max_string_size.sql
     
@@ -125,7 +125,7 @@ The following DDL creates a property graph (= node table and edge table) from th
 
 ![](https://user-images.githubusercontent.com/4862919/80330243-dfc17880-886e-11ea-8523-951045642a22.jpg)
 
-[`create_pg.pgql`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/customer_360/create_pg.pgql)
+[`create_pg.pgql`](https://github.com/ryotayamanaka/oracle-pg/blob/20.1/graphs/customer_360/create_pg.pgql)
 
     CREATE PROPERTY GRAPH customer_360
       VERTEX TABLES (
@@ -172,7 +172,7 @@ Set the new loading configuration into the list of preload graphs.
     "preload_graphs": [
       {"path": "/graphs/customer_360/rdbms.json", "name": "Customer 360"},
 
-[`rdbms.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/customer_360/rdbms.json) (abbreviated)
+[`rdbms.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.1/graphs/customer_360/rdbms.json) (abbreviated)
 
 ```
 {
