@@ -20,6 +20,8 @@ services:
      - ./conf/pgx-rdbms.conf:/etc/oracle/graph/pgx.conf
      - ./conf/server.conf:/etc/oracle/graph/server.conf
      - ./keystore.p12:/opt/oracle/keystore.p12
+    networks:
+      - oracle-pg
     command: >
       expect -c "
         set timeout 3
@@ -41,6 +43,8 @@ services:
     volumes:
      - ../graphs:/graphs
      - ./keystore.p12:/opt/oracle/keystore.p12
+    networks:
+      - oracle-pg
     tty: true
   zeppelin:
     image: apache/zeppelin:0.8.1
@@ -54,6 +58,8 @@ services:
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
+    networks:
+      - oracle-pg
   oracle-db:
     image: oracle/database:19.3.0-ee
     container_name: oracle-db
@@ -64,3 +70,7 @@ services:
       - ./rdbms/scripts:/home/oracle/scripts
     environment:
       - ORACLE_PWD=Welcome1
+    networks:
+      - oracle-pg
+networks:
+  oracle-pg:
