@@ -129,14 +129,21 @@ The following DDL creates a property graph (= node table and edge table) from th
 
     CREATE PROPERTY GRAPH customer_360
       VERTEX TABLES (
-        customer PROPERTIES ALL COLUMNS EXCEPT(id),
-        account PROPERTIES ALL COLUMNS EXCEPT(id)
-      )
+        customer
+          LABEL "Customer"
+          PROPERTIES (
+            type AS "type"
+            ...
+          
       EDGE TABLES (
         owned_by
           SOURCE KEY(from_id) REFERENCES account
           DESTINATION KEY(to_id) REFERENCES customer
-      )
+          LABEL "owned_by"
+          PROPERTIES (
+            since AS "since"
+            ...
+          
 
 Using Graph Client, connect to Oracle Database and run the DDL above.
 
