@@ -6,9 +6,19 @@ Please setup containers following the instruction [here](https://github.com/ryot
 
 ## Load Data into Database
 
-Download dataset (an Excel file) and save it as `data.csv` in CSV format.
+Download dataset `Online Retail.xlsx` from:
 
-* http://archive.ics.uci.edu/ml/datasets/online+retail#
+* Original site: http://archive.ics.uci.edu/ml/datasets/online+retail#
+* Alternate site: https://www.kaggle.com/jihyeseo/online-retail-data-set-from-uci-ml-repo
+
+Open with Excel and save the file as `data.csv` in CSV format. (Save As > File Format: CSV UTF-8)
+
+Put this file to the `retail` directory.
+
+    $ mv data.csv oracle-pg/graphs/retail/
+    $ dos2unix data.csv
+
+## Load Data into Database
 
 Run a bash console on `oracle-db` container.
 
