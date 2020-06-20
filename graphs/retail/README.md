@@ -84,7 +84,7 @@ Open Zeppelin (http://localhost:8080) and follow "Online Retail" note.
 
 ---
 
-## Appendix
+## Appendix 1
 
 Create graph on database. (However, this loading has performance issue.)
 
@@ -103,3 +103,10 @@ Alternatively, directly load from tables.
     enter password for keystore /opt/oracle/keystore.p12: [oracle]
 
     > var g = session.readGraphWithProperties("/graphs/retail/config-tables.json");
+
+## Appendix 2
+
+
+
+
+
