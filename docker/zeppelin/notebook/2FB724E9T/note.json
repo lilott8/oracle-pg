@@ -173,7 +173,7 @@
     {
       "text": "%md\n\nLet\u0027s assume that one customer logs in and the system needs to calculate the recommended product list.\n\nRun this query on Graph Visualization to see the products purchased by the customer 12346.\n\n```\nSELECT *\nMATCH (c1)-[e1]-\u003e(p1)\nWHERE ID(c1) \u003d \u0027cust_12346\u0027\n```\n\nTwo hops:\n\n```\nSELECT *\nMATCH (c1)-[e1]-\u003e(p1)\u003c-[e2]-(c2)\nWHERE ID(c1) \u003d \u0027cust_12346\u0027\n  AND ID(c1) !\u003d ID(c2)\n```\n\nThree hops:\n\n```\nSELECT *\nMATCH (c1)-[e1]-\u003e(p1)\u003c-[e2]-(c2)-[e3]-\u003e(p2)\nWHERE ID(c1) \u003d \u0027cust_12346\u0027\n  AND ID(c1) !\u003d ID(c2)\n  AND ID(p1) !\u003d ID(p2)\n```",
       "user": "anonymous",
-      "dateUpdated": "2020-06-15 14:32:29.952",
+      "dateUpdated": "2020-06-17 06:26:23.422",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -206,8 +206,8 @@
       "jobName": "paragraph_1592230492011_883154156",
       "id": "20200615-141452_2107654148",
       "dateCreated": "2020-06-15 14:14:52.012",
-      "dateStarted": "2020-06-15 14:32:30.069",
-      "dateFinished": "2020-06-15 14:32:30.424",
+      "dateStarted": "2020-06-17 06:26:23.533",
+      "dateFinished": "2020-06-17 06:26:39.877",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -521,8 +521,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "pgx:shared_process": []
+    "md:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
