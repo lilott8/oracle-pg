@@ -106,7 +106,10 @@ Alternatively, directly load from tables.
 
 ## Appendix 2
 
+How to store the partitioned graph in CSV format (using Zeppelin).
 
-
-
+    %pgx
+    graph = session.getGraph("Online Retail")
+    config = graph.store(ProviderFormat.PGB, "/graphs/retail/data/");
+    new File("/graphs/retail/data/config.json") << config.toString()
 
