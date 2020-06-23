@@ -56,7 +56,6 @@ services:
     volumes:
       - ../graphs:/graphs
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
-      - ./zeppelin/conf/interpreter.json:/zeppelin/conf/interpreter.json
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
     networks:
