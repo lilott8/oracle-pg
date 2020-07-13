@@ -61,4 +61,28 @@ WHERE stock_code IS NOT NULL
 SET ECHO ON
 SELECT * FROM purchases WHERE ROWNUM <= 5;
 
+
+CREATE TABLE purchases_distinct (
+  purchase_id
+, stock_code
+, customer_id
+) AS
+SELECT
+  ROWNUM AS purchase_id
+, stock_code
+, customer_id
+FROM (
+  SELECT DISTINCT
+    'prod_' || stock_code AS stock_code
+  , 'cust_' || customer_id AS customer_id
+  FROM transactions
+  WHERE stock_code IS NOT NULL
+    AND stock_code < 'A'
+    AND customer_id IS NOT NULL
+);
+
+SET ECHO ON
+SELECT * FROM purchases_distinct WHERE ROWNUM <= 5;
+
+
 EXIT
