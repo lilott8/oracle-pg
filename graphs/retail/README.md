@@ -67,15 +67,15 @@ Restart Graph Server (and other components).
 
 Open Graph Visualization (http://localhost:7007/ui) to check the graph "Online Retail" is loaded.
 
+- [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/highlights.json)
+
 ## Distinct Purchases
 
 The graph above counts all duplicated purchases (= when customers has purchased the same products multiple times). If you want to analyze the simplified graph which removed the duplicated edges, please use the configulation below.
 
-To pre-load the data into Graph Server, add this entry to `pgx-rdbms.conf`.
+To pre-load the data into Graph Server, add this entry ([`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json)) to `pgx-rdbms.conf`.
 
     {"path": "/graphs/retail/config-tables-distinct.json", "name": "Online Retail Distinct"}
-
-[`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json)
 
 
 ## Make Recommendations
@@ -85,12 +85,6 @@ Restart Zeppelin (or recreating the session from the interpreter settings).
     $ docker restart zeppelin
 
 Open Zeppelin (http://localhost:8080) and follow "Online Retail" note ([download](https://github.com/ryotayamanaka/oracle-pg/blob/master/docker/zeppelin/notebook/2FB724E9T/note.json)).
-
-
-## Deploy a Sample Application
-
-
-
 
 ---
 
