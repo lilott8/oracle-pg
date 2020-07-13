@@ -84,7 +84,7 @@ Restart Zeppelin (or recreating the session from the interpreter settings).
 
     $ docker restart zeppelin
 
-Open Zeppelin (http://localhost:8080) and follow "Online Retail" note ([download](https://github.com/ryotayamanaka/oracle-pg/blob/master/docker/zeppelin/notebook/2FB724E9T/note.json)).
+Open Zeppelin (http://localhost:8080) and follow "Online Retail" note ([`note.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/docker/zeppelin/notebook/2FB724E9T/note.json)).
 
 ---
 
