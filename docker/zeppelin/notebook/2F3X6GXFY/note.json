@@ -4,9 +4,9 @@
       "title": "",
       "text": "%md\n## Introduction\nThe Customer 360 sample data is an integrated dataset of 1) accounts and account owners, 2) purchases by the people who own those accounts, and 3) transactions between these accounts. The combined dataset is then used to perform the following common graph query and analyses: pattern matching, detection of cycles, finding important nodes, community detection, and recommendation.\n\n![](https://user-images.githubusercontent.com/4862919/63682754-d46f0680-c822-11e9-89ae-9c84e0aec2b3.jpg)",
       "user": "anonymous",
-      "dateUpdated": "2020-05-11 09:19:50.178",
+      "dateUpdated": "2020-07-28 12:49:17.840",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -14,7 +14,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0,
@@ -37,15 +37,15 @@
       "jobName": "paragraph_1582463310167_-141770078",
       "id": "20190329-123523_1871171899",
       "dateCreated": "2020-02-23 13:08:30.167",
-      "dateStarted": "2020-05-11 09:19:50.337",
-      "dateFinished": "2020-05-11 09:19:54.624",
+      "dateStarted": "2020-07-28 07:14:23.344",
+      "dateFinished": "2020-07-28 07:14:30.356",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%pgx\ng \u003d session.getGraph(\"Customer 360\")",
       "user": "anonymous",
-      "dateUpdated": "2020-06-11 07:15:19.449",
+      "dateUpdated": "2020-07-28 07:14:24.934",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dCustomer 360,N\u003d15,E\u003d24,created\u003d1591858655427]"
+            "data": "PgxGraph[name\u003dCustomer 360,N\u003d15,E\u003d24,created\u003d1595919742382]"
           }
         ]
       },
@@ -76,8 +76,8 @@
       "jobName": "paragraph_1582463310204_1999191484",
       "id": "20190402-164753_989376579",
       "dateCreated": "2020-02-23 13:08:30.204",
-      "dateStarted": "2020-06-11 07:15:19.564",
-      "dateFinished": "2020-06-11 07:15:21.952",
+      "dateStarted": "2020-07-28 07:14:25.358",
+      "dateFinished": "2020-07-28 07:14:43.852",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -647,7 +647,7 @@
     {
       "text": "%pgx\nsg.queryPgql(\"\"\"\n  SELECT a.account_no, a.pagerank\n  MATCH (a)\n  ORDER BY a.pagerank DESC\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-06-15 13:36:30.696",
+      "dateUpdated": "2020-07-28 12:49:16.895",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1434,7 +1434,11 @@
   "id": "2F3X6GXFY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "pgx:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "simple",

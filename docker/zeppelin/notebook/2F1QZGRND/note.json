@@ -457,7 +457,7 @@
       "title": "Examine Page Rank Results",
       "text": "%pgx\npg.queryPgql(\"SELECT id(x), x.name, x.approx_pagerank MATCH (x) ORDER BY x.approx_pagerank DESC LIMIT 10\")",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:40:34.348",
+      "dateUpdated": "2020-07-28 11:54:22.410",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -533,7 +533,7 @@
       "title": "Examine Betweenness Results",
       "text": "%pgx\npg.queryPgql(\"SELECT x.id(), x.name, x.betweenness WHERE (x) ORDER BY x.betweenness DESC LIMIT 10\")",
       "user": "anonymous",
-      "dateUpdated": "2020-02-23 13:40:34.433",
+      "dateUpdated": "2020-07-28 11:54:22.728",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -822,11 +822,7 @@
   "id": "2F1QZGRND",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "pgx:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false
   },
