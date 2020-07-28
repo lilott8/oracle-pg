@@ -1,0 +1,10 @@
+101,102,transaction,1000.00
+102,103,transaction,1500.30
+102,103,transaction,3000.70
+103,104,transaction,9999.50
+104,101,transaction,9900.00
+201,102,ownerOf,
+202,101,ownerOf,
+203,104,ownerOf,
+301,103,ownerOf,
+202,301,worksFor,

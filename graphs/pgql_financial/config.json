@@ -1,0 +1,19 @@
+{
+  "format": "csv",
+  "header": false,
+  "vertex_labels":true,
+  "edge_label":true,
+  "vertex_uris": ["vertices.csv"],
+  "edge_uris": ["edges.csv"],
+  "vertex_props": [
+    { "name": "number", "type": "integer" },
+    { "name": "name", "type": "string" }
+  ],
+  "edge_props": [
+    { "name": "amount", "type": "double" }
+  ],
+  "loading_options": {
+    "load_vertex_labels":true,
+    "load_edge_label":true
+  }
+}
