@@ -1,0 +1,6 @@
+101,102,knows
+101,103,knows
+103,101,knows
+101,201,studentOf
+102,201,studentOf
+103,201,studentOf
