@@ -1,34 +1,20 @@
 {
-    "format": "csv",
-    "header": false,
-    "vertex_id_column": 1,
-    "vertex_labels_column": 2,
-    "edge_source_column": 1,
-    "edge_destination_column": 2,
-    "vertex_uris": ["vertices.csv"],
-    "edge_uris": ["edges.csv"],
-    "vertex_props": [
-        {
-            "name": "age",
-            "type": "integer",
-            "column": 3
-        },
-        {
-            "name": "string_prop",
-            "type": "string",
-            "column": 4
-        }
-    ],
-    "edge_props": [
-        {
-            "name": "integer_prop",
-            "type": "integer",
-            "column": 3
-        },
-        {
-            "name": "string_prop",
-            "type": "string",
-            "column": 4
-        }
-    ]
+  "format": "csv",
+  "header": false,
+  "vertex_labels":true,
+  "edge_label":true,
+  "vertex_uris": ["vertices.csv"],
+  "edge_uris": ["edges.csv"],
+  "vertex_props": [
+    { "name": "age", "type": "integer" },
+    { "name": "string_prop", "type": "string" }
+  ],
+  "edge_props": [
+    { "name": "integer_prop", "type": "integer" },
+    { "name": "string_prop", "type": "string" }
+  ],
+  "loading_options": {
+    "load_vertex_labels":true,
+    "load_edge_label":true
+  }
 }
