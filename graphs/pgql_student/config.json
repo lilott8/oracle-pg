@@ -1,0 +1,18 @@
+{
+  "format": "csv",
+  "header": false,
+  "vertex_labels":true,
+  "edge_label":true,
+  "vertex_uris": ["vertices.csv"],
+  "edge_uris": ["edges.csv"],
+  "vertex_props": [
+    { "name": "name", "type": "string" },
+    { "name": "dob", "type": "local_date" }
+  ],
+  "edge_props": [
+  ],
+  "loading_options": {
+    "load_vertex_labels":true,
+    "load_edge_label":true
+  }
+}
