@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n## Variable-Length Paths\nPlease visit [the relevant section in pgql-lang.org](https://pgql-lang.org/spec/1.3/#variable-length-paths) for more details.\n\n![](https://user-images.githubusercontent.com/4862919/88672488-7cbbd800-d122-11ea-9a9f-12302837cf92.jpg)",
+      "text": "%md\n## Variable-Length Paths\n\nThis tutorial shows how to find **shortest paths** and **cheapest paths**, as well as how **horizontal aggregation** works.\n\nPlease visit [the relevant section in pgql-lang.org](https://pgql-lang.org/spec/1.3/#variable-length-paths) for more details.\n\n![](https://user-images.githubusercontent.com/4862919/88672488-7cbbd800-d122-11ea-9a9f-12302837cf92.jpg)",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 15:06:44.698",
+      "dateUpdated": "2020-07-29 16:17:31.462",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -28,7 +28,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eVariable-Length Paths\u003c/h2\u003e\n\u003cp\u003ePlease visit \u003ca href\u003d\"https://pgql-lang.org/spec/1.3/#variable-length-paths\"\u003ethe relevant section in pgql-lang.org\u003c/a\u003e for more details.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://user-images.githubusercontent.com/4862919/88672488-7cbbd800-d122-11ea-9a9f-12302837cf92.jpg\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eVariable-Length Paths\u003c/h2\u003e\n\u003cp\u003eThis tutorial shows how to find \u003cstrong\u003eshortest paths\u003c/strong\u003e and \u003cstrong\u003echeapest paths\u003c/strong\u003e, as well as how \u003cstrong\u003ehorizontal aggregation\u003c/strong\u003e works.\u003c/p\u003e\n\u003cp\u003ePlease visit \u003ca href\u003d\"https://pgql-lang.org/spec/1.3/#variable-length-paths\"\u003ethe relevant section in pgql-lang.org\u003c/a\u003e for more details.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://user-images.githubusercontent.com/4862919/88672488-7cbbd800-d122-11ea-9a9f-12302837cf92.jpg\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -36,8 +36,8 @@
       "jobName": "paragraph_1595943157208_1455213789",
       "id": "20200303-214034_1675571787",
       "dateCreated": "2020-07-28 13:32:37.209",
-      "dateStarted": "2020-07-28 15:06:44.700",
-      "dateFinished": "2020-07-28 15:06:44.727",
+      "dateStarted": "2020-07-29 16:17:31.465",
+      "dateFinished": "2020-07-29 16:17:31.536",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -45,7 +45,7 @@
       "title": "Load graph",
       "text": "%pgx\ngraph \u003d session.readGraphWithProperties(\"/graphs/pgql_financial/config.json\")",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 15:05:42.460",
+      "dateUpdated": "2020-07-29 13:53:28.535",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -64,21 +64,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "PgxGraph[name\u003dFinancial Transactions,N\u003d8,E\u003d10,created\u003d1596014912068]"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595943157229_-1573905017",
       "id": "20200728-114724_335653543",
       "dateCreated": "2020-07-28 13:32:37.229",
-      "dateStarted": "2020-07-28 15:05:42.689",
-      "dateFinished": "2020-07-28 15:05:42.880",
+      "dateStarted": "2020-07-29 13:53:28.848",
+      "dateFinished": "2020-07-29 13:53:34.276",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Quantifiers",
       "text": "%pgx\n// Find a shortest path from account 10039 to account 2090, following only transaction edges\ngraph.queryPgql(\"\"\"\nSELECT a.number AS a,\n       b.number AS b,\n       COUNT(e) AS pathLength,\n       ARRAY_AGG(e.amount) AS amounts\n  FROM MATCH SHORTEST ( (a:Account) -[e:transaction]-\u003e* (b:Account) )\n WHERE a.number \u003d 10039 AND b.number \u003d 2090\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 15:05:42.974",
+      "dateUpdated": "2020-07-29 13:53:35.899",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -128,14 +136,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "a\tb\tpathLength\tamounts\n10039\t2090\t3\t[1000.0, 1500.3, 9999.5]"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595943157249_-273805242",
       "id": "20200302-212041_1026051053",
       "dateCreated": "2020-07-28 13:32:37.249",
-      "dateStarted": "2020-07-28 15:05:43.072",
-      "dateFinished": "2020-07-28 15:05:43.258",
+      "dateStarted": "2020-07-29 13:53:36.020",
+      "dateFinished": "2020-07-29 13:53:39.615",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -620,24 +636,232 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n",
+      "text": "%pgx\ngraph.queryPgql(\"\"\"\nSELECT COUNT(e) AS num_hops\n     , SUM(e.amount) AS total_amount\n     , ARRAY_AGG(e.amount) AS amounts_along_path\n  FROM MATCH TOP 3 SHORTEST ( (a:Account) -[e:transaction]-\u003e* (b:Account) )\n WHERE a.number \u003d 10039\n   AND b.number \u003d 2090\n ORDER BY num_hops, total_amount\n\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 15:05:47.286",
+      "dateUpdated": "2020-07-29 14:00:40.388",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 144.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "num_hops": "string",
+                      "total_amount": "string",
+                      "amounts_along_path": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "num_hops\ttotal_amount\tamounts_along_path\n3\t12499.8\t[1000.0, 1500.3, 9999.5]\n3\t14000.2\t[1000.0, 3000.7, 9999.5]\n7\t34899.6\t[1000.0, 1500.3, 9999.5, 9900.0, 1000.0, 1500.3, 9999.5]"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1595948747281_266087153",
+      "id": "20200728-150547_1686606161",
+      "dateCreated": "2020-07-28 15:05:47.282",
+      "dateStarted": "2020-07-29 13:54:26.657",
+      "dateFinished": "2020-07-29 13:54:27.526",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\ngraph.queryPgql(\"\"\"\nSELECT COUNT(e) AS num_hops\n     , SUM(e.amount) AS total_amount\n     , ARRAY_AGG(e.amount) AS amounts_along_path\n  FROM MATCH CHEAPEST ( (a:Account) (-[e:transaction]-\u003e COST e.amount)* (b:Account) )\n WHERE a.number \u003d 10039\n   AND b.number \u003d 2090\n ORDER BY num_hops, total_amount\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 14:01:05.451",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 144.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "num_hops": "string",
+                      "total_amount": "string",
+                      "amounts_along_path": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "num_hops\ttotal_amount\tamounts_along_path\n3\t12499.8\t[1000.0, 1500.3, 9999.5]"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1596031249079_-1635162603",
+      "id": "20200729-140049_1107130858",
+      "dateCreated": "2020-07-29 14:00:49.079",
+      "dateStarted": "2020-07-29 14:00:55.657",
+      "dateFinished": "2020-07-29 14:00:57.027",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\ngraph.explainPgql(\"\"\"\nSELECT COUNT(e) AS num_hops\n     , SUM(e.amount) AS total_amount\n     , ARRAY_AGG(e.amount) AS amounts_along_path\n  FROM MATCH CHEAPEST ( (a:Account) (-[e:transaction]-\u003e COST e.amount)* (b:Account) )\n WHERE a.number \u003d 10039\n   AND b.number \u003d 2090\n ORDER BY num_hops, total_amount\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 14:11:26.975",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 144.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "num_hops": "string",
+                      "total_amount": "string",
+                      "amounts_along_path": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\\--- ORDER BY NUM_HOPS, TOTAL_AMOUNT OrderBy {\"cardinality\":\"10\", \"cost\":\"23\", \"accumulatedCost\":\"34\"}\n     \\--- (A) CHEAPEST ( (A) (-[E:TRANSACTION]-\u003e COST E.AMOUNT)* (B) ) (B) Reachability {\"cardinality\":\"10\", \"cost\":\"10\", \"accumulatedCost\":\"11\"}\n          \\--- (A) RootVertexMatch {\"cardinality\":\"1\", \"cost\":\"1\", \"accumulatedCost\":\"1\"}"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1596031877219_-406467295",
+      "id": "20200729-141117_1228062389",
+      "dateCreated": "2020-07-29 14:11:17.219",
+      "dateStarted": "2020-07-29 14:11:27.059",
+      "dateFinished": "2020-07-29 14:11:27.523",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 13:54:16.229",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1595948747281_266087153",
-      "id": "20200728-150547_1686606161",
-      "dateCreated": "2020-07-28 15:05:47.282",
+      "jobName": "paragraph_1596030856223_-1868212460",
+      "id": "20200729-135416_37105836",
+      "dateCreated": "2020-07-29 13:54:16.223",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Learning PGQL (2)",
+  "name": "Learning PGQL 3",
   "id": "2FF2QZ922",
   "noteParams": {},
   "noteForms": {},
@@ -647,7 +871,9 @@
     "spark:shared_process": []
   },
   "config": {
-    "isZeppelinNotebookCronEnable": false
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
   },
   "info": {}
 }

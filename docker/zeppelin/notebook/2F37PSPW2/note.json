@@ -3,7 +3,7 @@
     {
       "text": "%md\n## Graph Pattern Matching - Writing simple queries\nPlease visit [the relevant section in pgql-lang.org](https://pgql-lang.org/spec/1.3/#writing-simple-queries) for more details.\n\n![](https://user-images.githubusercontent.com/4862919/88668298-665f4d80-d11d-11ea-9680-0e89f15c1e98.jpg)",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:51.492",
+      "dateUpdated": "2020-07-29 16:16:19.825",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -36,8 +36,8 @@
       "jobName": "paragraph_1583271634531_-120473181",
       "id": "20200303-214034_1675571787",
       "dateCreated": "2020-03-03 21:40:34.532",
-      "dateStarted": "2020-07-28 13:23:51.508",
-      "dateFinished": "2020-07-28 13:23:51.564",
+      "dateStarted": "2020-07-29 16:16:19.828",
+      "dateFinished": "2020-07-29 16:16:19.871",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -45,7 +45,7 @@
       "title": "Load graph",
       "text": "%pgx\ngraph \u003d session.readGraphWithProperties(\"/graphs/pgql_student/config.json\")",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:15.068",
+      "dateUpdated": "2020-07-29 14:12:17.341",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -64,21 +64,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "PgxGraph[name\u003dStudent Network,N\u003d4,E\u003d6,created\u003d1596014911321]"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595936844042_-1849466386",
       "id": "20200728-114724_335653543",
       "dateCreated": "2020-07-28 11:47:24.042",
-      "dateStarted": "2020-07-28 13:23:15.156",
-      "dateFinished": "2020-07-28 13:23:15.366",
+      "dateStarted": "2020-07-29 14:12:17.402",
+      "dateFinished": "2020-07-29 14:12:19.413",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Vertex patterns",
       "text": "%pgx\n// Find all the vertices with the label \"Person\" and return their names and dates of birth (dob)\ngraph.queryPgql(\"\"\"\nSELECT n.name, n.dob\n  FROM MATCH (n:Person)\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:15.460",
+      "dateUpdated": "2020-07-29 14:13:06.097",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -126,21 +134,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\\--- (N) RootVertexMatch {\"cardinality\":\"3\", \"cost\":\"3\", \"accumulatedCost\":\"3\"}"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1583184041859_-28530037",
       "id": "20200302-212041_1026051053",
       "dateCreated": "2020-03-02 21:20:41.859",
-      "dateStarted": "2020-07-28 13:23:15.602",
-      "dateFinished": "2020-07-28 13:23:15.800",
+      "dateStarted": "2020-07-29 14:12:24.640",
+      "dateFinished": "2020-07-29 14:12:24.864",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Edge patterns",
       "text": "%pgx\n// Find all the edges with the label \"knows\" and return the source persons and destination persons\ngraph.queryPgql(\"\"\"\nSELECT a.name AS a, b.name AS b\n  FROM MATCH (a:Person) -[e:knows]-\u003e (b:Person)\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:15.925",
+      "dateUpdated": "2020-07-29 14:12:57.805",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -188,21 +204,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\\--- (A) -[E]-\u003e (B) NeighborMatch {\"cardinality\":\"2.25\", \"cost\":\"2.25\", \"accumulatedCost\":\"5.25\"}\n     \\--- (A) RootVertexMatch {\"cardinality\":\"3\", \"cost\":\"3\", \"accumulatedCost\":\"3\"}"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1583270176524_-1650833948",
       "id": "20200303-211616_495605545",
       "dateCreated": "2020-03-03 21:16:16.524",
-      "dateStarted": "2020-07-28 13:23:16.073",
-      "dateFinished": "2020-07-28 13:23:16.437",
+      "dateStarted": "2020-07-29 14:12:33.939",
+      "dateFinished": "2020-07-29 14:12:34.205",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Label disjunction",
       "text": "%pgx\n// Find all the vertices with the label \"Person\" or \"University\"\ngraph.queryPgql(\"\"\"\nSELECT n.name, n.dob\n  FROM MATCH (n:Person|University)\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:16.510",
+      "dateUpdated": "2020-07-29 14:12:54.290",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -250,14 +274,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\\--- (N) RootVertexMatch {\"cardinality\":\"4\", \"cost\":\"4\", \"accumulatedCost\":\"4\"}"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1583274701715_978545574",
       "id": "20200303-223141_283396721",
       "dateCreated": "2020-03-03 22:31:41.715",
-      "dateStarted": "2020-07-28 13:23:16.715",
-      "dateFinished": "2020-07-28 13:23:17.379",
+      "dateStarted": "2020-07-29 14:12:48.180",
+      "dateFinished": "2020-07-29 14:12:48.434",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -450,7 +482,7 @@
       "title": "More complex patterns (1)",
       "text": "%pgx\n// Find people that Lee knows and that are a student at the same university as Lee\ngraph.queryPgql(\"\"\"\nSELECT p2.name AS friend, u.name AS university\n  FROM MATCH (u:University) \u003c-[:studentOf]- (p1:Person) -[:knows]-\u003e (p2:Person) -[:studentOf]-\u003e (u)\n WHERE p1.name \u003d \u0027Lee\u0027\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:19.750",
+      "dateUpdated": "2020-07-29 14:13:57.427",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -498,21 +530,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "friend\tuniversity\nKathrine\tUC Berkeley"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595938546154_338138373",
       "id": "20200728-121546_290505134",
       "dateCreated": "2020-07-28 12:15:46.154",
-      "dateStarted": "2020-07-28 13:23:19.846",
-      "dateFinished": "2020-07-28 13:23:20.073",
+      "dateStarted": "2020-07-29 14:13:57.482",
+      "dateFinished": "2020-07-29 14:13:58.224",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "More complex patterns (2)",
       "text": "%pgx\n// The same as above\ngraph.queryPgql(\"\"\"\nSELECT p2.name AS friend, u.name AS university\n  FROM MATCH (p1:Person) -[:knows]-\u003e (p2:Person)\n     , MATCH (p1) -[:studentOf]-\u003e (u:University)\n     , MATCH (p2) -[:studentOf]-\u003e (u)\n WHERE p1.name \u003d \u0027Lee\u0027\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:20.140",
+      "dateUpdated": "2020-07-29 14:14:13.201",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -560,14 +600,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "friend\tuniversity\nKathrine\tUC Berkeley"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595938547240_-2059161884",
       "id": "20200728-121547_1437981992",
       "dateCreated": "2020-07-28 12:15:47.240",
-      "dateStarted": "2020-07-28 13:23:20.232",
-      "dateFinished": "2020-07-28 13:23:20.397",
+      "dateStarted": "2020-07-29 14:14:13.252",
+      "dateFinished": "2020-07-29 14:14:13.471",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -635,9 +683,9 @@
     },
     {
       "title": "Binding an element multiple times (2)",
-      "text": "%pgx\n// The same as above (but exclude the hopping back)\ngraph.queryPgql(\"\"\"\nSELECT p1.name AS p1, p2.name AS p2, p3.name AS p3\n  FROM MATCH (p1:Person) -[:knows]-\u003e (p2:Person) -[:knows]-\u003e (p3:Person)\n WHERE p1.name \u003d \u0027Lee\u0027 AND p1 \u003c\u003e p3\n\"\"\");",
+      "text": "%pgx\n// The same as above (but exclude the hopping back)\ngraph.explainPgql(\"\"\"\nSELECT p1.name AS p1, p2.name AS p2, p3.name AS p3\n  FROM MATCH (p1:Person) -[:knows]-\u003e (p2:Person) -[:knows]-\u003e (p3:Person)\n WHERE p1.name \u003d \u0027Lee\u0027 AND p1 \u003c\u003e p3\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:20.750",
+      "dateUpdated": "2020-07-29 14:15:32.784",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -686,21 +734,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\\--- (P2) -[\"anonymous_2\"]-\u003e (P3) NeighborMatch {\"cardinality\":\"84.4E-3\", \"cost\":\"84.4E-3\", \"accumulatedCost\":\"347E-3\"}\n     \\--- (P1) -[\"anonymous_1\"]-\u003e (P2) NeighborMatch {\"cardinality\":\"113E-3\", \"cost\":\"113E-3\", \"accumulatedCost\":\"263E-3\"}\n          \\--- (P1) RootVertexMatch {\"cardinality\":\"150E-3\", \"cost\":\"150E-3\", \"accumulatedCost\":\"150E-3\"}"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595938549471_-995726248",
       "id": "20200728-121549_946250866",
       "dateCreated": "2020-07-28 12:15:49.471",
-      "dateStarted": "2020-07-28 13:23:20.790",
-      "dateFinished": "2020-07-28 13:23:21.169",
+      "dateStarted": "2020-07-29 14:15:32.847",
+      "dateFinished": "2020-07-29 14:15:33.148",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Binding an element multiple times (3)",
-      "text": "%pgx\n// The same as above\ngraph.queryPgql(\"\"\"\nSELECT p1.name AS p1, p2.name AS p2, p3.name AS p3\n  FROM MATCH (p1:Person) -[:knows]-\u003e (p2:Person) -[:knows]-\u003e (p3:Person)\n WHERE p1.name \u003d \u0027Lee\u0027 AND ALL_DIFFERENT(p1, p3)\n\"\"\");",
+      "text": "%pgx\n// The same as above\ngraph.explainPgql(\"\"\"\nSELECT p1.name AS p1, p2.name AS p2, p3.name AS p3\n  FROM MATCH (p1:Person) -[:knows]-\u003e (p2:Person) -[:knows]-\u003e (p3:Person)\n WHERE p1.name \u003d \u0027Lee\u0027 AND ALL_DIFFERENT(p1, p3)\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 13:23:21.196",
+      "dateUpdated": "2020-07-29 14:14:32.193",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -798,14 +854,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\\--- (P2) -[\"anonymous_2\"]-\u003e (P3) NeighborMatch {\"cardinality\":\"84.4E-3\", \"cost\":\"84.4E-3\", \"accumulatedCost\":\"347E-3\"}\n     \\--- (P1) -[\"anonymous_1\"]-\u003e (P2) NeighborMatch {\"cardinality\":\"113E-3\", \"cost\":\"113E-3\", \"accumulatedCost\":\"263E-3\"}\n          \\--- (P1) RootVertexMatch {\"cardinality\":\"150E-3\", \"cost\":\"150E-3\", \"accumulatedCost\":\"150E-3\"}"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1595940086645_-196778082",
       "id": "20200728-124126_105425461",
       "dateCreated": "2020-07-28 12:41:26.645",
-      "dateStarted": "2020-07-28 13:23:21.618",
-      "dateFinished": "2020-07-28 13:23:22.097",
+      "dateStarted": "2020-07-29 14:14:32.242",
+      "dateFinished": "2020-07-29 14:14:32.545",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -978,7 +1042,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Learning PGQL (1)",
+  "name": "Learning PGQL 1",
   "id": "2F37PSPW2",
   "noteParams": {},
   "noteForms": {},

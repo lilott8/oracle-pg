@@ -1,9 +1,51 @@
 {
   "paragraphs": [
     {
-      "text": "%pgx\ngraph \u003d session.readGraphWithProperties(\"/graphs/pgql_modification/config2.json\")",
+      "text": "%md\n## Graph Modification\nPlease visit [the relevant section in pgql-lang.org](https://pgql-lang.org/spec/1.3/#graph-modification) for more details.",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 12:01:08.004",
+      "dateUpdated": "2020-07-29 06:53:43.796",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eGraph Modification\u003c/h2\u003e\n\u003cp\u003ePlease visit \u003ca href\u003d\"https://pgql-lang.org/spec/1.3/#graph-modification\"\u003ethe relevant section in pgql-lang.org\u003c/a\u003e for more details.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1596003821267_1369564075",
+      "id": "20200729-062341_391441838",
+      "dateCreated": "2020-07-29 06:23:41.271",
+      "dateStarted": "2020-07-29 06:53:43.794",
+      "dateFinished": "2020-07-29 06:53:43.901",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Load Graph",
+      "text": "%pgx\ngraph \u003d session.readGraphWithProperties(\"/graphs/pgql_modification/config.json\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:41:31.569",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -14,7 +56,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB"
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/scala",
+        "title": true
       },
       "settings": {
         "params": {},
@@ -25,7 +68,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dvertices_9,N\u003d2,E\u003d1,created\u003d1595937668326]"
+            "data": "PgxGraph[name\u003dvertices_2,N\u003d0,E\u003d0,created\u003d1596015230490]"
           }
         ]
       },
@@ -33,15 +76,16 @@
       "jobName": "paragraph_1595919803652_-312867034",
       "id": "20200728-070323_1279591686",
       "dateCreated": "2020-07-28 07:03:23.653",
-      "dateStarted": "2020-07-28 12:01:08.047",
-      "dateFinished": "2020-07-28 12:01:08.756",
+      "dateStarted": "2020-07-29 09:41:31.638",
+      "dateFinished": "2020-07-29 09:41:31.922",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pgx\ngraph \u003d graph.cloneAndExecutePgql(\"\"\"\n  INSERT VERTEX x LABELS (Male) PROPERTIES (x.age \u003d 22)\n\"\"\");",
+      "title": "Inserting vertices (1)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT VERTEX x LABELS ( Male ) PROPERTIES ( x.age \u003d 22 )\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 12:01:26.024",
+      "dateUpdated": "2020-07-29 09:42:34.047",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -52,7 +96,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB"
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/scala",
+        "title": true
       },
       "settings": {
         "params": {},
@@ -63,7 +108,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "PgxGraph[name\u003dsub-graph_47,N\u003d3,E\u003d1,created\u003d1595937686251]"
+            "data": "PgxGraph[name\u003dsub-graph_8,N\u003d1,E\u003d0,created\u003d1596015694599]"
           }
         ]
       },
@@ -71,15 +116,15 @@
       "jobName": "paragraph_1595920039971_-375638588",
       "id": "20200728-070719_1852549765",
       "dateCreated": "2020-07-28 07:07:19.971",
-      "dateStarted": "2020-07-28 12:01:26.059",
-      "dateFinished": "2020-07-28 12:01:26.380",
+      "dateStarted": "2020-07-29 09:41:34.334",
+      "dateFinished": "2020-07-29 09:41:34.668",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pgx\ngraph.queryPgql(\"\"\"\n  SELECT x.age, ID(x), LABEL(x)\n  FROM MATCH (x)\n\"\"\")",
+      "text": "%pgx\ngraph2.queryPgql(\"\"\"\nSELECT ID(x), LABEL(x), x.age\n  FROM MATCH (x)\n\"\"\")",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 12:01:42.217",
+      "dateUpdated": "2020-07-29 09:42:30.565",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -88,7 +133,7 @@
           "0": {
             "graph": {
               "mode": "table",
-              "height": 300.0,
+              "height": 110.0,
               "optionOpen": false,
               "setting": {
                 "table": {
@@ -131,7 +176,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "age\tID(x)\tLABEL(x)\n20\t1\tPerson\n20\t2\tPerson\n22\t3\tMALE"
+            "data": "ID(x)\tLABEL(x)\tage\n0\tMALE\t22"
           }
         ]
       },
@@ -139,20 +184,90 @@
       "jobName": "paragraph_1595923897861_1305642805",
       "id": "20200728-081137_1620974105",
       "dateCreated": "2020-07-28 08:11:37.861",
-      "dateStarted": "2020-07-28 12:01:41.926",
-      "dateFinished": "2020-07-28 12:01:42.086",
+      "dateStarted": "2020-07-29 09:41:37.203",
+      "dateFinished": "2020-07-29 09:41:37.495",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pgx\ngraph \u003d graph.cloneAndExecutePgql(\"\"\"\n  INSERT VERTEX x LABELS ( Male ) PROPERTIES ( x.age \u003d y.age )\n  FROM MATCH (y)\n\"\"\");",
+      "title": "Inserting vertices (2)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT VERTEX x LABELS ( Male ) PROPERTIES ( x.age \u003d y.age )\n  FROM MATCH (y:Male)\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 08:34:52.913",
+      "dateUpdated": "2020-07-29 09:42:21.679",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "PgxGraph[name\u003dsub-graph_16,N\u003d2,E\u003d0,created\u003d1596005975618]"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1595923784490_838619822",
+      "id": "20200728-080944_1496989953",
+      "dateCreated": "2020-07-28 08:09:44.491",
+      "dateStarted": "2020-07-29 06:59:35.125",
+      "dateFinished": "2020-07-29 06:59:35.981",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pgx\ngraph2.queryPgql(\"\"\"\nSELECT ID(x), LABEL(x), x.age\n  FROM MATCH (x)\n\"\"\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:42:45.127",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 134.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "ID(x)": "string",
+                      "LABEL(x)": "string",
+                      "age": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
@@ -168,24 +283,25 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "PgxGraph[name\u003dsub-graph_45,N\u003d16,E\u003d0,created\u003d1595925293132]"
+            "type": "TABLE",
+            "data": "ID(x)\tLABEL(x)\tage\n0\tMALE\t22\n1\tMALE\t22"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1595923784490_838619822",
-      "id": "20200728-080944_1496989953",
-      "dateCreated": "2020-07-28 08:09:44.491",
-      "dateStarted": "2020-07-28 08:34:52.941",
-      "dateFinished": "2020-07-28 08:34:53.206",
+      "jobName": "paragraph_1596005921313_-2124377840",
+      "id": "20200729-065841_1614554271",
+      "dateCreated": "2020-07-29 06:58:41.313",
+      "dateStarted": "2020-07-29 06:59:38.826",
+      "dateFinished": "2020-07-29 06:59:38.981",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%pgx\ngraph \u003d graph.cloneAndExecutePgql(\"\"\"\n  INSERT EDGE e BETWEEN x AND y\n  FROM MATCH (x)\n     , MATCH (y)\n  WHERE id(x) \u003d 1 AND id(y) \u003d 2\n\"\"\");",
+      "title": "Inserting vertices (3)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\n  INSERT VERTEX x LABELS ( Profession ) PROPERTIES ( x.name \u003d y.profession )\n    FROM MATCH (y:Person)\nGROUP BY y.profession\n\"\"\");",
       "user": "anonymous",
-      "dateUpdated": "2020-07-28 08:34:56.632",
+      "dateUpdated": "2020-07-29 09:42:48.717",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -196,7 +312,8 @@
           "editOnDblClick": false,
           "completionKey": "TAB"
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/scala",
+        "title": true
       },
       "settings": {
         "params": {},
@@ -218,6 +335,298 @@
       "dateStarted": "2020-07-28 08:34:56.671",
       "dateFinished": "2020-07-28 08:34:56.830",
       "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Inserting edges",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\n  INSERT EDGE e BETWEEN x AND y\n  FROM MATCH (x)\n     , MATCH (y)\n  WHERE id(x) \u003d 1 AND id(y) \u003d 2\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:42:54.128",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596006110732_-1878126193",
+      "id": "20200729-070150_176490776",
+      "dateCreated": "2020-07-29 07:01:50.733",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Labels",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT EDGE e BETWEEN x AND y LABELS ( knows )\n  FROM MATCH (x:Person)\n     , MATCH (y:Person)\n WHERE id(x) \u003d 1 AND id(y) \u003d 2\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:42:58.923",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596006309265_-2055007165",
+      "id": "20200729-070509_1452085801",
+      "dateCreated": "2020-07-29 07:05:09.265",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Properties (vertex)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT VERTEX v PROPERTIES ( v.age \u003d 22 )\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:43:03.117",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "PgxGraph[name\u003dsub-graph_5,N\u003d1,E\u003d0,created\u003d1596015236440]"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1596006335098_-599207504",
+      "id": "20200729-070535_1214880799",
+      "dateCreated": "2020-07-29 07:05:35.099",
+      "dateStarted": "2020-07-29 09:33:54.935",
+      "dateFinished": "2020-07-29 09:33:57.704",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Properties (edge)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT EDGE e BETWEEN x AND y LABELS ( knows ) PROPERTIES ( e.since \u003d DATE \u00272017-09-21\u0027 )\n  FROM MATCH (x:Person)\n     , MATCH (y:Person)\n WHERE id(x) \u003d 1 AND id(y) \u003d 2\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:43:05.070",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596015248736_-715643695",
+      "id": "20200729-093408_1405388175",
+      "dateCreated": "2020-07-29 09:34:08.736",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Multiple inserts in the same INSERT clause (vertex)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT\n  VERTEX v LABELS ( Male ) PROPERTIES ( v.age \u003d 23, v.name \u003d \u0027John\u0027 ),\n  VERTEX u LABELS ( Female ) PROPERTIES ( u.age \u003d 24, v.name \u003d \u0027Jane\u0027 )\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:43:07.562",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596015303708_-290702163",
+      "id": "20200729-093503_710819209",
+      "dateCreated": "2020-07-29 09:35:03.708",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Multiple inserts in the same INSERT clause (vertex and edge)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT VERTEX x LABELS ( Person ) PROPERTIES ( x.name \u003d \u0027John\u0027 )\n     , EDGE e BETWEEN x AND y LABELS ( knows ) PROPERTIES ( e.since \u003d DATE \u00272017-09-21\u0027 )\n  FROM MATCH (y)\n WHERE y.name \u003d \u0027Jane\u0027\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:43:11.211",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596015363403_-2144117298",
+      "id": "20200729-093603_2004644242",
+      "dateCreated": "2020-07-29 09:36:03.403",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Multiple inserts in the same INSERT clause (edge)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nINSERT EDGE e BETWEEN x AND y\n  FROM MATCH (x)\n     , MATCH (y) -\u003e (z)\n WHERE id(x) \u003d\u003d 1\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:43:21.718",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596015375537_1533106470",
+      "id": "20200729-093615_774181629",
+      "dateCreated": "2020-07-29 09:36:15.537",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Update (vertices)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nUPDATE x SET ( x.age \u003d 42 )\n  FROM MATCH (x:Person)\n WHERE x.name \u003d \u0027John\u0027\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:46:52.063",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "\u003cdetails\u003e\u003csummary style\u003d\u0027cursor: pointer; cursor: hand;\u0027\u003e \u0026nbsp;\u003cem\u003e\u003cstrong\u003eException:\u003c/strong\u003e\u003c/em\u003e no vertex property named NAME found when compiling pgql query code: PGX-ERROR-2C7DUJGOJPH3K \u003cem\u003e\u003cspan style\u003d\u0027color: #9A9A9A;\u0027\u003e \u0026mdash; click for stack trace\u003c/span\u003e\u003c/em\u003e\n\u003c/summary\u003e\u003cdiv style\u003d\u0027margin-top:1em; color: #AC0000;\u0027\u003e\u003cdiv style\u003d\u0027margin-left: 3.75em; font-size: 0.9em; letter-spacing: 0.05em;\u0027\u003ejava.util.concurrent.ExecutionException \u003cstrong\u003ejava.lang.Exception: no vertex property named NAME found when compiling pgql query code: PGX-ERROR-2C7DUJGOJPH3K\u003c/strong\u003e\n\u003cdiv style\u003d\u0027margin-left: 3em;\u0027\u003e\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eCompletableFuture\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ereportGet\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (CompletableFuture.java : 357)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eCompletableFuture\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eget\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (CompletableFuture.java : 1895)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.api\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxFuture\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eget\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxFuture.java : 99)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.api\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxGraph\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecloneAndExecutePgql\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxGraph.java : 4341)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.api.PgxGraph\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ecloneAndExecutePgql\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.runtime.callsite\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eCallSiteArray\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003edefaultCall\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (CallSiteArray.java : 47)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.runtime.callsite\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eAbstractCallSite\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (AbstractCallSite.java : 116)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.runtime.callsite\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eAbstractCallSite\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (AbstractCallSite.java : 128)\u003c/span\u003e\u003cbr\u003e\ngroovysh_evaluate.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (groovysh_evaluate : 3)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003egroovysh_evaluate\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003erun\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.runtime.callsite\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eCallSiteArray\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003edefaultCall\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (CallSiteArray.java : 47)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003egroovysh_evaluate\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003erun\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.tools.shell\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eInterpreter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eevaluate\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Interpreter.groovy : 71)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.tools.shell.Evaluator\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eevaluate\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.codehaus.groovy.tools.shell\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eGroovysh\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eexecute\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Groovysh.groovy : 196)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.shell\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eShell\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eexecute\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Shell.java : 47)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.shell\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eAbstractConsole\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eexecute\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (AbstractConsole.java : 233)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.zeppelin\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxInterpreter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eexecuteLine\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxInterpreter.java : 201)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.stream.ReferencePipeline$3\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003e1\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eaccept\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ReferencePipeline.java : 193)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.Spliterators\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eArraySpliterator\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eforEachRemaining\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Spliterators.java : 948)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.stream\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eAbstractPipeline\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecopyInto\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (AbstractPipeline.java : 481)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.stream\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eAbstractPipeline\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ewrapAndCopyInto\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (AbstractPipeline.java : 471)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.stream.ReduceOps\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eReduceOp\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eevaluateSequential\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ReduceOps.java : 708)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.stream\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eAbstractPipeline\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eevaluate\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (AbstractPipeline.java : 234)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.stream\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eReferencePipeline\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecollect\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ReferencePipeline.java : 499)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.zeppelin\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxInterpreter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eshellExecute\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxInterpreter.java : 191)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.zeppelin\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxInterpreter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003edoInterpret\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxInterpreter.java : 187)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.zeppelin\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxInterpreter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003einterpret\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxInterpreter.java : 148)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.apache.zeppelin.interpreter\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eLazyOpenInterpreter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003einterpret\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (LazyOpenInterpreter.java : 103)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.apache.zeppelin.interpreter.remote.RemoteInterpreterServer\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eInterpretJob\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ejobRun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (RemoteInterpreterServer.java : 632)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.apache.zeppelin.scheduler\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eJob\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Job.java : 188)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eorg.apache.zeppelin.scheduler.FIFOScheduler\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003e1\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (FIFOScheduler.java : 140)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent.Executors\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eRunnableAdapter\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003ecall\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Executors.java : 511)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eFutureTask\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (FutureTask.java : 266)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent.ScheduledThreadPoolExecutor\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eScheduledFutureTask\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eaccess$201\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ScheduledThreadPoolExecutor.java : 180)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent.ScheduledThreadPoolExecutor\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eScheduledFutureTask\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ScheduledThreadPoolExecutor.java : 293)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eThreadPoolExecutor\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erunWorker\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ThreadPoolExecutor.java : 1149)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent.ThreadPoolExecutor\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eWorker\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ThreadPoolExecutor.java : 624)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.lang\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eThread\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Thread.java : 748)\u003c/span\u003e\u003cbr\u003e\n\u003c/div\u003e\u003ci\u003ecaused by\u003c/i\u003e\u003c/div\u003e\u003cdiv style\u003d\u0027margin-left: 3.75em; font-size: 0.9em; letter-spacing: 0.05em;\u0027\u003ejava.lang.Exception \u003cstrong\u003eno vertex property named NAME found when compiling pgql query code: PGX-ERROR-2C7DUJGOJPH3K\u003c/strong\u003e\n\u003cdiv style\u003d\u0027margin-left: 3em;\u0027\u003e\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.common.marshalers\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eExceptionMarshaler\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003etoUnserializedException\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ExceptionMarshaler.java : 100)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.common.marshalers\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eExceptionMarshaler\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eunmarshal\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ExceptionMarshaler.java : 113)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.client\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eRemoteUtils\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eparseExceptionalResponse\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (RemoteUtils.java : 135)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.client\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eRemoteUtils\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003egetResponseContent\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (RemoteUtils.java : 103)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.client\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eRemoteUtils\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003egetResponseContent\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (RemoteUtils.java : 71)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.client\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eRemoteUtils\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eparse\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (RemoteUtils.java : 158)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.client\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxRemoteFuture\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003eexecuteRequest\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxRemoteFuture.java : 115)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003eoracle.pgx.client\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003ePgxRemoteFuture\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003elambda$fetchRemoteResultAsync$16\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (PgxRemoteFuture.java : 221)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eThreadPoolExecutor\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erunWorker\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ThreadPoolExecutor.java : 1149)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.util.concurrent.ThreadPoolExecutor\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eWorker\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (ThreadPoolExecutor.java : 624)\u003c/span\u003e\u003cbr\u003e\n\u003cspan style\u003d\u0027color: #AC8888\u0027\u003ejava.lang\u003c/span\u003e.\u003cspan style\u003d\u0027color: black\u0027\u003eThread\u003c/span\u003e.\u003cstrong\u003e\u003cspan style\u003d\u0027color: #AA0000\u0027\u003erun\u003c/span\u003e\u003c/strong\u003e \u003cspan style\u003d\u0027color: #CACACA;\u0027\u003e (Thread.java : 748)\u003c/span\u003e\u003cbr\u003e\n\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/details\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1596015838284_276415299",
+      "id": "20200729-094358_2129994877",
+      "dateCreated": "2020-07-29 09:43:58.284",
+      "dateStarted": "2020-07-29 09:45:30.361",
+      "dateFinished": "2020-07-29 09:45:31.771",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Update (multiple vertices and edges)",
+      "text": "%pgx\ngraph2 \u003d graph.cloneAndExecutePgql(\"\"\"\nUPDATE v SET ( v.carOwner \u003d true )\n     , u SET ( u.weight \u003d 3500 )\n     , e SET ( e.since \u003d DATE \u00272010-01-03\u0027 )\n  FROM MATCH (v:Person) \u003c-[e:belongs_to]- (u:Car)\n WHERE v.name \u003d \u0027John\u0027\n\"\"\");",
+      "user": "anonymous",
+      "dateUpdated": "2020-07-29 09:47:11.508",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1596015971028_-3327485",
+      "id": "20200729-094611_257834549",
+      "dateCreated": "2020-07-29 09:46:11.028",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -275,7 +684,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Graph Modification",
+  "name": "Learning PGQL 4",
   "id": "2FENYUN83",
   "noteParams": {},
   "noteForms": {},
