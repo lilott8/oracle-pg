@@ -14,9 +14,7 @@ Let's try loading graph data from files before setting up database in the step 2
 
 ### Clone this Repository
 
-    $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20.2
-
-(The repository `20.2` is compatible with **Graph Server and Client 20.2**) 
+    $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20200730
 
 ### Download and Extract Packages
 
