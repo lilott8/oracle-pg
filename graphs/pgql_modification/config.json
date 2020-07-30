@@ -7,11 +7,13 @@
   "edge_uris": ["edges.csv"],
   "vertex_props": [
     { "name": "age", "type": "integer" },
-    { "name": "string_prop", "type": "string" }
+    { "name": "name", "type": "string" },
+    { "name": "profession", "type": "string" },
+    { "name": "carOwner", "type": "boolean" },
+    { "name": "weight", "type": "integer" }
   ],
   "edge_props": [
-    { "name": "integer_prop", "type": "integer" },
-    { "name": "string_prop", "type": "string" }
+    { "name": "since", "type": "local_date" }
   ],
   "loading_options": {
     "load_vertex_labels":true,
