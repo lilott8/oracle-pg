@@ -7,7 +7,6 @@
   ],
   "format": "flat_file",
   "node_id_type": "integer",
-  "edge_label": true,
   "vertex_props": [
     {
       "name": "name",

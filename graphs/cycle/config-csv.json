@@ -9,8 +9,6 @@
   "vertex_uris":["nodes.csv"],
   "edge_uris":["edges.csv"],
   "vertex_id_type":"long",
-  "vertex_labels":true,
-  "edge_label":true,
   "vertex_props":[
   ],
   "edge_props":[
