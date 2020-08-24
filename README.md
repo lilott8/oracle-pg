@@ -32,7 +32,7 @@ Build the image.
     $ cd <your-work-directory>
     $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20.3
 
-### Download and Extract Packages
+## Download and Extract Packages
 
 Go to the following pages and download the packages.
 
@@ -52,7 +52,7 @@ Run the following script to extract packages:
     $ cd oracle-pg/packages/
     $ sh extract.sh
 
-### Start Containers
+## Start Containers
 
 Start the containers for **Oracle Database** only first.
 
@@ -67,7 +67,7 @@ Start the containers for **Oracle Database** only first.
 
 **This job takes time.**
 
-### Configure Oracle Database
+## Configure Oracle Database
 
 Connect to the Oracle Database server. See [Appendix 1](#appendix-1) if you get an error.
 
@@ -82,7 +82,7 @@ Craete user roles and users.
     SQL> @/home/oracle/scripts/create_users.sql
     SQL> EXIT
 
-### Start Containers for Graph Server, Graph Client, and Zeppelin
+## Start Containers for Graph Server, Graph Client, and Zeppelin
 
 Build and pull images, create containers, and start them.
 
