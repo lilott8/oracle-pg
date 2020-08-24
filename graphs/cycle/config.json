@@ -1,15 +1,20 @@
 {
-  "format":"edge_list",
-  "uri":"edges.csv",
+  "format":"csv",
+  "header":false,
+  "vertex_id_column":1,
+  "vertex_labels_column":2,
+  "edge_source_column":1,
+  "edge_destination_column":2,
+  "edge_label_column":3,
+  "vertex_uris":["nodes.csv"],
+  "edge_uris":["edges.csv"],
   "vertex_id_type":"long",
-  "vertex_labels":false,
-  "edge_label":true,
   "vertex_props":[
   ],
   "edge_props":[
   ],
   "loading_options": {
-    "load_vertex_labels":false,
+    "load_vertex_labels":true,
     "load_edge_label":true
   },
   "separator":","

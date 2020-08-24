@@ -5,6 +5,13 @@ AV=2.4.18 # Apache Groovy Version
 
 rm ../zeppelin/interpreter/pgx/*.jar
 
+#unzip oracle-graph-client-$OV.zip -d ./oracle-graph-client
+#cp ./oracle-graph-client/*.jar ../zeppelin/interpreter/pgx/
+#rm -r ./oracle-graph-client
+
+rm -r ../rdbms/scripts/oracle-graph-plsql
+unzip oracle-graph-plsql-$OV.zip -d ../rdbms/scripts/oracle-graph-plsql
+
 unzip oracle-graph-zeppelin-interpreter-$OV.zip -d ./oracle-graph-zeppelin-interpreter
 cp ./oracle-graph-zeppelin-interpreter/*.jar ../zeppelin/interpreter/pgx/
 rm -r ./oracle-graph-zeppelin-interpreter

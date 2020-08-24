@@ -1,0 +1,4 @@
+packages/*.rpm
+packages/*.zip
+zeppelin/interpreter/pgx/*.jar
+scripts/oracle-graph-plsql/*

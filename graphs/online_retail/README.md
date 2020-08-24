@@ -22,7 +22,7 @@ Put this file to the `retail` directory.
 
 Run a bash console on `oracle-db` container.
 
-    $ docker exec -it oracle-db /bin/bash
+    $ docker exec -it oracle-db /bin/bash /graphs/retail/setup.sh
 
 Create database user and `transactions` table, then load the data.
 
