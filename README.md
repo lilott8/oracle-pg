@@ -30,7 +30,7 @@ Build the image.
 ## Clone this Repository
 
     $ cd <your-work-directory>
-    $ git clone https://github.com/ryotayamanaka/oracle-pg.git
+    $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20.3
 
 ### Download and Extract Packages
 
