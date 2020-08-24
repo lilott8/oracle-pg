@@ -35,3 +35,16 @@ do
   let COUNT++
 done
 ```
+
+## Pre-load Setting 
+
+For pre-loading the graph into Graph Server, add these two entry to `pgx.conf`.
+
+    {
+    
+      "authorization": [
+        "pgx_permissions": [
+        , { "preloaded_graph": "Cycle", "grant": "READ"}    <--
+      
+      "preload_graphs": [
+      , {"path": "/graphs/cycle/config.json", "name": "Cycle"}    <--

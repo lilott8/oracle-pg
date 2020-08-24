@@ -22,7 +22,7 @@ Put this file to the `retail` directory.
 
 Run a bash console on `oracle-db` container.
 
-    $ docker exec -it oracle-db /bin/bash /graphs/retail/setup.sh
+    $ docker-compose exec oracle-db /bin/bash /graphs/retail/setup.sh
 
 Create database user and `transactions` table, then load the data.
 
@@ -37,11 +37,17 @@ For creating nodes, this table should be normalized into `customers` table and `
 
     $ sqlplus retail/Welcome1@orclpdb1 @create_table_normalized.sql
 
-To pre-load the data into Graph Server, add this entry to `pgx-rdbms.conf`.
+For pre-loading the graph into Graph Server, add these two entry to `pgx.conf`.
 
-    {"path": "/graphs/retail/config-tables.json", "name": "Online Retail"}
+    {
+      "authorization": [
+        "pgx_permissions": [
+        , { "preloaded_graph": "Online Retail", "grant": "READ"}    <--
+    
+      "preload_graphs": [
+      , {"path": "/graphs/online_retail/config-tables.json", "name": "Online Retail"}    <--
 
-[`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json)
+cf. [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json)
 
 ```
 {
@@ -63,7 +69,8 @@ To pre-load the data into Graph Server, add this entry to `pgx-rdbms.conf`.
 
 Restart Graph Server (and other components).
 
-    $ docker restart graph-server
+    $ cd oracle-pg/
+    $ docker-compose restart graph-server
 
 Open Graph Visualization (http://localhost:7007/ui) to check the graph "Online Retail" is loaded.
 
@@ -77,12 +84,12 @@ To pre-load the data into Graph Server, add this entry ([`config-tables-distinct
 
     {"path": "/graphs/retail/config-tables-distinct.json", "name": "Online Retail Distinct"}
 
-
 ## Make Recommendations
 
 Restart Zeppelin (or recreating the session from the interpreter settings).
 
-    $ docker restart zeppelin
+    $ cd oracle-pg/
+    $ docker-compose restart zeppelin
 
 Open Zeppelin (http://localhost:8080) and follow "Online Retail" note ([`note.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/docker/zeppelin/notebook/2FB724E9T/note.json)).
 
@@ -92,7 +99,8 @@ Open Zeppelin (http://localhost:8080) and follow "Online Retail" note ([`note.js
 
 Create graph on database. (However, this loading has performance issue.)
 
-    $ docker exec -it graph-client opg-jshell
+    $ cd oracle-pg/
+    $ docker-compose exec graph-client opg-jshell
 
     > var jdbcUrl = "jdbc:oracle:thin:@oracle-db:1521/orclpdb1"
     > var conn = DriverManager.getConnection(jdbcUrl, "retail", "Welcome1")
@@ -103,7 +111,8 @@ Create graph on database. (However, this loading has performance issue.)
 
 Alternatively, directly load from tables.
 
-    $ docker exec -it graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
+    $ cd oracle-pg/
+    $ docker-compose exec graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
     enter password for keystore /opt/oracle/keystore.p12: [oracle]
 
     > var g = session.readGraphWithProperties("/graphs/retail/config-tables.json");
