@@ -38,7 +38,7 @@ done
 
 ## Pre-load Setting 
 
-For pre-loading the graph into Graph Server, add these two entry to `pgx.conf`.
+For pre-loading the graph into Graph Server, add these two entry to `conf/pgx.conf`.
 
     {
     
