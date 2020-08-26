@@ -9,8 +9,8 @@ rm ../zeppelin/interpreter/pgx/*.jar
 #cp ./oracle-graph-client/*.jar ../zeppelin/interpreter/pgx/
 #rm -r ./oracle-graph-client
 
-rm -r ../rdbms/scripts/oracle-graph-plsql
-unzip oracle-graph-plsql-$OV.zip -d ../rdbms/scripts/oracle-graph-plsql
+rm -r ../scripts/oracle-graph-plsql
+unzip oracle-graph-plsql-$OV.zip -d ../scripts/oracle-graph-plsql
 
 unzip oracle-graph-zeppelin-interpreter-$OV.zip -d ./oracle-graph-zeppelin-interpreter
 cp ./oracle-graph-zeppelin-interpreter/*.jar ../zeppelin/interpreter/pgx/
