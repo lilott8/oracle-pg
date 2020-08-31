@@ -15,89 +15,70 @@ Open with Excel and save the file as `data.csv` in CSV format. (Save As > File F
 
 Put this file to the `retail` directory.
 
-    $ mv data.csv oracle-pg/graphs/retail/
+    $ mv data.csv oracle-pg/graphs/online_retail/
     $ dos2unix data.csv
 
 ## Load Data into Database
 
 Run a bash console on `oracle-db` container.
 
-    $ docker-compose exec oracle-db /bin/bash /graphs/retail/setup.sh
+    $ cd oracle-pg/
+    $ docker-compose exec oracle-db /bin/bash
 
-Create database user and `transactions` table, then load the data.
+Move to the project directory (inside the container).
 
-    $ cd /graphs/retail/
+    $ cd /graphs/online_retail/
+
+Create a database user and `transactions` table, then load the data from the csv files.
+
     $ sqlplus sys/Welcome1@orclpdb1 as sysdba @create_user.sql
-    $ sqlplus retail/Welcome1@orclpdb1 @create_table.sql
-    $ sqlldr retail/Welcome1@orclpdb1 sqlldr.ctl sqlldr.log sqlldr.bad direct=true
 
-## Convert Data from Tables to Graph 
+Create `transactions` table.
 
-For creating nodes, this table should be normalized into `customers` table and `products` table.
+    $ sqlplus online_retail/Welcome1@orclpdb1 @create_table.sql
 
-    $ sqlplus retail/Welcome1@orclpdb1 @create_table_normalized.sql
+Load the data from the CSV file.
 
-For pre-loading the graph into Graph Server, add these two entry to `pgx.conf`.
+    $ sqlldr online_retail/Welcome1@orclpdb1 sqlldr.ctl sqlldr.log sqlldr.bad direct=true
+
+## Convert Data from Tables to Graph
+
+This table can be normalized to create 4 tables (`customers`, `products`, `purchases`, `purchases_distinct`).
+
+    $ sqlplus online_retail/Welcome1@orclpdb1 @create_table_normalized.sql
+
+Exit from the database container.
+
+    $ exit
+
+For pre-loading the graph into Graph Server, add these two entries to `conf/pgx.conf`.
 
     {
       "authorization": [
         "pgx_permissions": [
-        , { "preloaded_graph": "Online Retail", "grant": "READ"}    <--
-    
+        , { "preloaded_graph": "Online Retail", "grant": "READ"}            <--
+
       "preload_graphs": [
-      , {"path": "/graphs/online_retail/config-tables.json", "name": "Online Retail"}    <--
+      , {"path": "/graphs/online_retail/config-tables-distinct.json", "name": "Online Retail"}   <--
 
-cf. [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json)
+There are two loading configuration files in the directory, [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json) and [`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json). The former counts all duplicated purchases (when customers has purchased the same products multiple times), while such duplicated edges are merged in the latter. We use the distinct version for making recommendations here.
 
-```
-{
-  "jdbc_url":"jdbc:oracle:thin:@oracle-db:1521/orclpdb1",
-  "username":"retail",
-  "keystore_alias":"database1",
-  "name":"retail",
-  "vertex_providers": [
-    {
-      "name":"Customer",
-      ...
-
-  "edge_providers": [
-    {
-      "name":"has_purchased",
-      ...
-
-```
-
-Restart Graph Server (and other components).
+Restart Graph Server.
 
     $ cd oracle-pg/
     $ docker-compose restart graph-server
 
-Open Graph Visualization (http://localhost:7007/ui) to check the graph "Online Retail" is loaded.
-
-- [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/highlights.json)
-
-## Distinct Purchases
-
-The graph above counts all duplicated purchases (= when customers has purchased the same products multiple times). If you want to analyze the simplified graph which removed the duplicated edges, please use the configulation below.
-
-To pre-load the data into Graph Server, add this entry ([`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json)) to `pgx-rdbms.conf`.
-
-    {"path": "/graphs/retail/config-tables-distinct.json", "name": "Online Retail Distinct"}
+Open Graph Visualization (http://localhost:7007/ui) and confirm the graph "Online Retail" is loaded. Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/retail/highlights.json) for better highlights.
 
 ## Make Recommendations
 
-Restart Zeppelin (or recreating the session from the interpreter settings).
-
-    $ cd oracle-pg/
-    $ docker-compose restart zeppelin
-
-Open Zeppelin (http://localhost:8080) and follow "Online Retail" note ([`note.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/docker/zeppelin/notebook/2FB724E9T/note.json)).
+Open Zeppelin (http://localhost:8080) and import [`zeppelin.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/zeppelin.json) to load the "Online Retail" note.
 
 ---
 
 ## Appendix 1
 
-Create graph on database. (However, this loading has performance issue.)
+Create graph on database.
 
     $ cd oracle-pg/
     $ docker-compose exec graph-client opg-jshell
@@ -125,4 +106,3 @@ How to store the partitioned graph in CSV format (using Zeppelin).
     graph = session.getGraph("Online Retail")
     config = graph.store(ProviderFormat.PGB, "/graphs/retail/data/");
     new File("/graphs/retail/data/config.json") << config.toString()
-

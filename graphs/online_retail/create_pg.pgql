@@ -1,4 +1,4 @@
-CREATE PROPERTY GRAPH retail
+CREATE PROPERTY GRAPH online_retail
   VERTEX TABLES (
     customers
       LABEL "Customer"

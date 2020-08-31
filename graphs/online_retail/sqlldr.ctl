@@ -1,7 +1,7 @@
 OPTIONS (SKIP=1)
 LOAD DATA
 CHARACTERSET UTF8
-INFILE '/graphs/retail/data.csv'
+INFILE '/graphs/online_retail/data.csv'
 TRUNCATE INTO TABLE transactions
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'

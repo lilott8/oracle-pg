@@ -1,6 +1,6 @@
 {
   "jdbc_url":"jdbc:oracle:thin:@oracle-db:1521/orclpdb1",
-  "username":"retail",
+  "username":"online_retail",
   "keystore_alias":"database1",
   "name":"retail",
   "vertex_providers": [
