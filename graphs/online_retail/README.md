@@ -51,7 +51,105 @@ Exit from the database container.
 
     $ exit
 
-For pre-loading the graph into Graph Server, add these two entries to `conf/pgx.conf`.
+## Make Recommendations
+
+Access Graph Server with the username and password to get the authentication token:
+
+    $ curl -X POST -H 'Content-Type: application/json' -d '{"username": "graph_dev", "password": "Welcome1"}' http://localhost:7007/auth/token
+    {"access_token":"eyJraWQiOiJEY...r2uM6vFhdw","token_type":"bearer","expires_in":14400}
+
+Connect to Graph Server using Graph Client (JShell).
+
+    $ cd oracle-pg/
+    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007 --secret_store /opt/oracle/keystore.p12
+    enter authentication token (press Enter for no token):          <-- Input the token above and press Enter
+    enter password for keystore /opt/oracle/keystore.p12: [oracle]
+    opg-jshell>
+
+Get the graph and try a simple PGQL query. ([[Appendix 1]])
+
+    opg-jshell> var graph = session.readGraphWithProperties("/graphs/online_retail/config-tables-distinct.json", "Online Retail");
+    graph ==> PgxGraph[name=Online Retail,N=8258,E=532452,created=1599043512155]
+
+    opg-jshell> graph.queryPgql(" SELECT n.description MATCH (n:Product) LIMIT 3 ").print();
+    +-----------------------------------+
+    | n.description                     |
+    +-----------------------------------+
+    | LUNCH BAG WOODLAND                |
+    | GROW YOUR OWN BASIL IN ENAMEL MUG |
+    | CHOCOLATE BOX RIBBONS             |
+    +-----------------------------------+
+
+List the products purchased by a customer "cust_12353".
+
+    opg-jshell> graph.queryPgql(" SELECT ID(c), ID(p), p.description FROM MATCH (c)-[has_purchased]->(p) WHERE ID(c) = 'cust_12353' ").print();
+    +--------------------------------------------------------------+
+    | ID(c)      | ID(p)      | description                        |
+    +--------------------------------------------------------------+
+    | cust_12353 | prod_37446 | MINI CAKE STAND WITH HANGING CAKES |
+    | cust_12353 | prod_22890 | NOVELTY BISCUITS CAKE STAND 3 TIER |
+    | cust_12353 | prod_37449 | CERAMIC CAKE STAND + HANGING CAKES |
+    | cust_12353 | prod_37450 | CERAMIC CAKE BOWL + HANGING CAKES  |
+    +--------------------------------------------------------------+
+
+Run Personalized PageRank (PPR) having the customer "cust_12353" as a focused node.
+
+    opg-jshell> var vertex = graph.getVertex("cust_12353");
+    opg-jshell> analyst.personalizedPagerank(graph, vertex)
+
+Get the top 10 recommended products.
+
+    opg-jshell>
+    graph.queryPgql(
+    "  SELECT ID(p), p.description, p.pagerank " +
+    "  MATCH (p) " +
+    "  WHERE LABEL(p) = 'Product' " +
+    "    AND NOT EXISTS ( " +
+    "     SELECT * " +
+    "     MATCH (p)-[:purchased_by]->(a) " +
+    "     WHERE ID(a) = 'cust_12353' " +
+    "    ) " +
+    "  ORDER BY p.pagerank DESC" +
+    "  LIMIT 10"
+    ).print();
+    +--------------------------------------------------------------------------+
+    | ID(p)       | p.description                      | p.pagerank            |
+    +--------------------------------------------------------------------------+
+    | prod_22423  | REGENCY CAKESTAND 3 TIER           | 0.00134836568957801   |
+    | prod_85123A | WHITE HANGING HEART T-LIGHT HOLDER | 0.0013000764817371663 |
+    | prod_21232  | STRAWBERRY CERAMIC TRINKET POT     | 0.0010642787031750636 |
+    | prod_22720  | SET OF 3 CAKE TINS PANTRY DESIGN   | 9.987259826891447E-4  |
+    | prod_47566  | PARTY BUNTING                      | 8.800446053134877E-4  |
+    | prod_21231  | SWEETHEART CERAMIC TRINKET BOX     | 8.793185974570989E-4  |
+    | prod_21212  | PACK OF 72 RETROSPOT CAKE CASES    | 7.749485802100009E-4  |
+    | prod_84991  | 60 TEATIME FAIRY CAKE CASES        | 7.561654694509063E-4  |
+    | prod_85099B | JUMBO BAG RED RETROSPOT            | 7.258904143858246E-4  |
+    | prod_84879  | ASSORTED COLOUR BIRD ORNAMENT      | 7.223349157689752E-4  |
+    +--------------------------------------------------------------------------+
+
+To login to Graph Visualization with the same session, get the current session ID.
+
+    opg-jshell> session.getId();
+    $1 ==> "21526873-768b-49b7-9742-3fa798e00130"
+
+## Visualization
+
+Open Graph Visualization (http://localhost:7007/ui) with username: graph_dev, password: Welcome1, session ID: (above).
+
+Select "Online Retail" graph, and run the query below to see the paths between the customer "cust_12353" and the top recommended product above.
+
+    SELECT *
+    MATCH (c1)-[e1]->(p1)<-[e2]-(c2)-[e3]->(p2)
+    WHERE ID(c1) = 'cust_12353'
+      AND ID(p2) = 'prod_23166'
+      AND ID(c1) != ID(c2)
+      AND ID(p1) != ID(p2)
+
+Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/retail/highlights.json) for adding icons and changing the size of nodes according to the pagerank.
+
+## Notebook
+
+For pre-loading the graph into Graph Server, add these two entries to conf/pgx.conf.
 
     {
       "authorization": [
@@ -61,48 +159,15 @@ For pre-loading the graph into Graph Server, add these two entries to `conf/pgx.
       "preload_graphs": [
       , {"path": "/graphs/online_retail/config-tables-distinct.json", "name": "Online Retail"}   <--
 
-There are two loading configuration files in the directory, [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json) and [`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json). The former counts all duplicated purchases (when customers has purchased the same products multiple times), while such duplicated edges are merged in the latter. We use the distinct version for making recommendations here.
-
 Restart Graph Server.
 
     $ cd oracle-pg/
     $ docker-compose restart graph-server
 
-Open Graph Visualization (http://localhost:7007/ui) and confirm the graph "Online Retail" is loaded. Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/retail/highlights.json) for better highlights.
-
-## Make Recommendations
-
 Open Zeppelin (http://localhost:8080) and import [`zeppelin.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/zeppelin.json) to load the "Online Retail" note.
 
 ---
 
-## Appendix 1
+## Appendix
 
-Create graph on database.
-
-    $ cd oracle-pg/
-    $ docker-compose exec graph-client opg-jshell
-
-    > var jdbcUrl = "jdbc:oracle:thin:@oracle-db:1521/orclpdb1"
-    > var conn = DriverManager.getConnection(jdbcUrl, "retail", "Welcome1")
-    > conn.setAutoCommit(false)
-    > var pgql = PgqlConnection.getConnection(conn)
-    > pgql.prepareStatement(Files.readString(Paths.get("/graphs/retail/create_pg.pgql"))).execute()
-    $xx ==> false
-
-Alternatively, directly load from tables.
-
-    $ cd oracle-pg/
-    $ docker-compose exec graph-client opg-jshell --secret_store /opt/oracle/keystore.p12
-    enter password for keystore /opt/oracle/keystore.p12: [oracle]
-
-    > var g = session.readGraphWithProperties("/graphs/retail/config-tables.json");
-
-## Appendix 2
-
-How to store the partitioned graph in CSV format (using Zeppelin).
-
-    %pgx
-    graph = session.getGraph("Online Retail")
-    config = graph.store(ProviderFormat.PGB, "/graphs/retail/data/");
-    new File("/graphs/retail/data/config.json") << config.toString()
+There are two loading configuration files in the directory, [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json) and [`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json). The former counts all duplicated purchases (when customers has purchased the same products multiple times), while such duplicated edges are merged in the latter. We use the distinct version for making recommendations here.
