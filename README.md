@@ -30,9 +30,9 @@ Build the image.
 ## Clone this Repository
 
     $ cd <your-work-directory>
-    $ git clone https://github.com/ryotayamanaka/oracle-pg.git
+    $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20.3
 
-### Download and Extract Packages
+## Download and Extract Packages for Graph Server and Client
 
 Go to the following pages and download the packages.
 
@@ -52,7 +52,7 @@ Run the following script to extract packages:
     $ cd oracle-pg/packages/
     $ sh extract.sh
 
-### Start Containers
+## Start a Container (Database)
 
 Start the containers for **Oracle Database** only first.
 
@@ -67,11 +67,12 @@ Start the containers for **Oracle Database** only first.
 
 **This job takes time.**
 
-### Configure Oracle Database
+## Configure Database
 
 Connect to the Oracle Database server. See [Appendix 1](#appendix-1) if you get an error.
 
-    $ docker exec -it oracle-db sqlplus sys/Welcome1@orclpdb1 as sysdba
+    $ cd oracle-pg/
+    $ docker-compose exec oracle-db sqlplus sys/Welcome1@orclpdb1 as sysdba
 
 Configure Property Graph features.
 
@@ -82,7 +83,7 @@ Craete user roles and users.
     SQL> @/home/oracle/scripts/create_users.sql
     SQL> EXIT
 
-### Start Containers for Graph Server, Graph Client, and Zeppelin
+## Start Containers (Graph Server, Graph Client, and Zeppelin)
 
 Build and pull images, create containers, and start them.
 
@@ -107,7 +108,7 @@ You need to start the container if it is stopped.
 
 You will get this error when you try to connect before the database is created.
 
-    $ docker exec -it oracle-db sqlplus sys/Welcome1@localhost:1521/orclpdb1 as sysdba
+    $ docker-compose exec oracle-db sqlplus sys/Welcome1@localhost:1521/orclpdb1 as sysdba
     ...
     ORA-12514: TNS:listener does not currently know of service requested in connect
 

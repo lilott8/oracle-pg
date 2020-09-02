@@ -79,6 +79,7 @@ FROM (
   WHERE stock_code IS NOT NULL
     AND stock_code < 'A'
     AND customer_id IS NOT NULL
+    AND quantity > 0
 );
 
 SET ECHO ON

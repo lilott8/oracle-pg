@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 19.0.0.0.0 - Production on Sun Aug 16 10:03:56 2020
+SQL*Loader: Release 19.0.0.0.0 - Production on Mon Aug 31 12:50:27 2020
 Version 19.3.0.0.0
 
 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
@@ -7,7 +7,7 @@ Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
 Control File:   sqlldr.ctl
 Character Set UTF8 specified for all input.
 
-Data File:      /graphs/retail/data.csv
+Data File:      /graphs/online_retail/data.csv
   Bad File:     sqlldr.bad
   Discard File:  none specified
  
@@ -52,8 +52,8 @@ Total logical records discarded:        0
 Total stream buffers loaded by SQL*Loader main thread:      127
 Total stream buffers loaded by SQL*Loader load thread:       88
 
-Run began on Sun Aug 16 10:03:56 2020
-Run ended on Sun Aug 16 10:04:04 2020
+Run began on Mon Aug 31 12:50:27 2020
+Run ended on Mon Aug 31 12:50:32 2020
 
-Elapsed time was:     00:00:07.10
-CPU time was:         00:00:00.79
+Elapsed time was:     00:00:05.09
+CPU time was:         00:00:01.62
