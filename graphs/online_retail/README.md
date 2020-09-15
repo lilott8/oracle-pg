@@ -136,6 +136,8 @@ To login to Graph Visualization with the same session, get the current session I
 
 Open Graph Visualization (http://localhost:7007/ui) with username: graph_dev, password: Welcome1, session ID: (above).
 
+![](https://user-images.githubusercontent.com/4862919/91992834-9084da80-ed6f-11ea-89ee-6d6134c2bb3d.jpg)
+
 Select "Online Retail" graph, and run the query below to see the paths between the customer "cust_12353" and the top recommended product above.
 
     SELECT *
@@ -145,7 +147,9 @@ Select "Online Retail" graph, and run the query below to see the paths between t
       AND ID(c1) != ID(c2)
       AND ID(p1) != ID(p2)
 
-Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/retail/highlights.json) for adding icons and changing the size of nodes according to the pagerank.
+Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/highlights.json) for adding icons and changing the size of nodes according to the pagerank.
+
+![](https://user-images.githubusercontent.com/4862919/91992798-86fb7280-ed6f-11ea-9586-8b600c94a8ed.jpg)
 
 ## Notebook
 
