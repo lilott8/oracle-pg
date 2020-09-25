@@ -23,7 +23,7 @@ Put this file to the `retail` directory.
 Run a bash console on `oracle-db` container.
 
     $ cd oracle-pg/
-    $ docker-compose exec oracle-db /bin/bash
+    $ docker-compose exec --user 54321 oracle-db /bin/bash
 
 Move to the project directory (inside the container).
 
@@ -153,6 +153,18 @@ Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/
 
 ## Notebook
 
+Open Zeppelin (http://localhost:8080) and import [`zeppelin.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/zeppelin.json) to load the "Online Retail" note.
+
+You will connect to Graph Server in the first step, and load the graph next. You can access the same graph from Graph Visuzlization using the session ID returned at the first step.
+
+---
+
+## Appendix 1
+
+There are two loading configuration files in the directory, [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json) and [`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json). The former counts all duplicated purchases (when customers has purchased the same products multiple times), while such duplicated edges are merged in the latter. We use the distinct version for making recommendations here.
+
+## Appendix 2
+
 For pre-loading the graph into Graph Server, add these two entries to conf/pgx.conf.
 
     {
@@ -167,11 +179,3 @@ Restart Graph Server.
 
     $ cd oracle-pg/
     $ docker-compose restart graph-server
-
-Open Zeppelin (http://localhost:8080) and import [`zeppelin.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/zeppelin.json) to load the "Online Retail" note.
-
----
-
-## Appendix
-
-There are two loading configuration files in the directory, [`config-tables.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables.json) and [`config-tables-distinct.json`](https://github.com/ryotayamanaka/oracle-pg/blob/master/graphs/retail/config-tables-distinct.json). The former counts all duplicated purchases (when customers has purchased the same products multiple times), while such duplicated edges are merged in the latter. We use the distinct version for making recommendations here.
