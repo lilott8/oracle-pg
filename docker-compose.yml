@@ -8,12 +8,12 @@ services:
       context: .
       dockerfile: Dockerfile-server
       args:
-        - VERSION=20.3.0
-    image: graph-server:20.3.0
+        - VERSION=20.4.0
+    image: graph-server:20.4.0
     ports:
       - "7007:7007"
     depends_on:
-      - "oracle-db"
+      - "database"
     volumes:
      - ./graphs:/graphs
      - ./conf/pgx.conf:/etc/oracle/graph/pgx.conf
@@ -36,8 +36,8 @@ services:
       context: .
       dockerfile: Dockerfile-client
       args:
-        - VERSION=20.3.0
-    image: graph-client:20.3.0
+        - VERSION=20.4.0
+    image: graph-client:20.4.0
     volumes:
      - ./graphs:/graphs
      - ./keystore.p12:/opt/oracle/keystore.p12
@@ -58,7 +58,7 @@ services:
       - ./keystore.p12:/opt/oracle/keystore.p12
     networks:
       - network
-  oracle-db:
+  database:
     image: oracle/database:19.3.0-ee
     ports:
       - "1521:1521"

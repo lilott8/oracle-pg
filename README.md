@@ -30,22 +30,22 @@ Build the image.
 ## Clone this Repository
 
     $ cd <your-work-directory>
-    $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20.3
+    $ git clone https://github.com/ryotayamanaka/oracle-pg.git -b 20.4
 
 ## Download and Extract Packages for Graph Server and Client
 
 Go to the following pages and download the packages.
 
-* [Oracle Graph Server and Client 20.3](https://www.oracle.com/database/technologies/spatialandgraph/property-graph-features/graph-server-and-client/graph-server-and-client-downloads.html)
-* [Apache Groovy 2.4.18](https://dl.bintray.com/groovy/maven/apache-groovy-binary-2.4.18.zip)
+* [Oracle Graph Server and Client 20.4](https://www.oracle.com/database/technologies/spatialandgraph/property-graph-features/graph-server-and-client/graph-server-and-client-downloads.html)
+* [Apache Groovy 2.4.20](https://dl.bintray.com/groovy/maven/apache-groovy-binary-2.4.20.zip)
 
 Put the following files to `oracle-pg/packages/`
  
-- oracle-graph-20.3.0.x86_64.rpm
-- oracle-graph-client-20.3.0.zip
-- oracle-graph-zeppelin-interpreter-20.3.0.zip
-- oracle-graph-plsql-20.3.0.zip
-- apache-groovy-binary-2.4.18.zip
+- oracle-graph-20.4.0.x86_64.rpm
+- oracle-graph-client-20.4.0.zip
+- oracle-graph-zeppelin-interpreter-20.4.0.zip
+- oracle-graph-plsql-20.4.0.zip
+- apache-groovy-binary-2.4.20.zip
 
 Run the following script to extract packages:
 
@@ -57,13 +57,13 @@ Run the following script to extract packages:
 Start the containers for **Oracle Database** only first.
 
     $ cd oracle-pg/
-    $ docker-compose up oracle-db
+    $ docker-compose up database
     ...
-    oracle-db       | Completing Database Creation
+    database_1      | Completing Database Creation
     ...
-    oracle-db       | #########################
-    oracle-db       | DATABASE IS READY TO USE!
-    oracle-db       | #########################
+    database_1      | #########################
+    database_1      | DATABASE IS READY TO USE!
+    database_1      | #########################
 
 **This job takes time.**
 
@@ -72,13 +72,13 @@ Start the containers for **Oracle Database** only first.
 Connect to the Oracle Database server. See [Appendix 1](#appendix-1) if you get an error.
 
     $ cd oracle-pg/
-    $ docker-compose exec oracle-db sqlplus sys/Welcome1@orclpdb1 as sysdba
+    $ docker-compose exec database sqlplus sys/Welcome1@orclpdb1 as sysdba
 
-Configure Property Graph features.
+Configure Property Graph features. This script was extracted from oracle-graph-plsql-xx.x.x.zip.
 
     SQL> @/home/oracle/scripts/oracle-graph-plsql/19c_and_above/catopg.sql
 
-Craete user roles and users.
+Create user roles (graph_developer, graph_administrator) and users (graph_dev, graph_admin).
 
     SQL> @/home/oracle/scripts/create_users.sql
     SQL> EXIT
@@ -104,18 +104,18 @@ To stop, restart, or remove the containers, see [Appendix 2](#appendix-2).
 You need to start the container if it is stopped.
 
     $ cd oracle-pg/
-    $ docker-compose start oracle-db
+    $ docker-compose start database
 
 You will get this error when you try to connect before the database is created.
 
-    $ docker-compose exec oracle-db sqlplus sys/Welcome1@localhost:1521/orclpdb1 as sysdba
+    $ docker-compose exec database sqlplus sys/Welcome1@localhost:1521/orclpdb1 as sysdba
     ...
     ORA-12514: TNS:listener does not currently know of service requested in connect
 
 To check the progress, see logs.
 
     $ cd oracle-pg/
-    $ docker-compose logs -f oracle-db
+    $ docker-compose logs -f database
 
 `Cnt+C` to quit.
 

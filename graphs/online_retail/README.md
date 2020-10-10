@@ -20,10 +20,10 @@ Put this file to the `retail` directory.
 
 ## Load Data into Database
 
-Run a bash console on `oracle-db` container.
+Run a bash console on `database` container.
 
     $ cd oracle-pg/
-    $ docker-compose exec --user 54321 oracle-db /bin/bash
+    $ docker-compose exec --user 54321 database /bin/bash
 
 Move to the project directory (inside the container).
 

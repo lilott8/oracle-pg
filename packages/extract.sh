@@ -1,7 +1,7 @@
 #!/bin/bash
 
-OV=20.3.0 # Oracle Graph Server and Client Version
-AV=2.4.18 # Apache Groovy Version
+OV=20.4.0 # Oracle Graph Server and Client Version
+AV=2.4.20 # Apache Groovy Version
 
 rm ../zeppelin/interpreter/pgx/*.jar
 

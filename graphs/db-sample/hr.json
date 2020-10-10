@@ -2,7 +2,7 @@
   "format": "pg",
   "db_engine": "rdbms",
   "name": "hr",
-  "jdbc_url": "jdbc:oracle:thin:@host.docker.internal:1521/orclpdb1",
+  "jdbc_url": "jdbc:oracle:thin:@database:1521/orclpdb1",
   "username": "hr",
   "keystore_alias": "database1",
   "vertex_props": [
