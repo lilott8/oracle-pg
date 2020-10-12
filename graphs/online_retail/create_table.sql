@@ -1,3 +1,4 @@
+SET ECHO ON
 CREATE TABLE transactions (
   invoice_no VARCHAR2(255)
 , stock_code VARCHAR2(255)

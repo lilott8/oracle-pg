@@ -13,14 +13,14 @@ Download dataset `Online Retail.xlsx` from:
 
 Open with Excel and save the file as `data.csv` in CSV format. (Save As > File Format: CSV UTF-8)
 
-Put this file to the `retail` directory.
+Put this file to the `online_retail` directory.
 
     $ mv data.csv oracle-pg/graphs/online_retail/
     $ dos2unix data.csv
 
 ## Load Data into Database
 
-Run a bash console on `database` container.
+Run a bash console on `database` container as user "54321" (= "oracle" user in the container, for writing the sqlldr files).
 
     $ cd oracle-pg/
     $ docker-compose exec --user 54321 database /bin/bash
@@ -95,7 +95,7 @@ List the products purchased by a customer "cust_12353".
 Run Personalized PageRank (PPR) having the customer "cust_12353" as a focused node.
 
     opg-jshell> var vertex = graph.getVertex("cust_12353");
-    opg-jshell> analyst.personalizedPagerank(graph, vertex)
+    opg-jshell> analyst.personalizedPagerank(graph, vertex);
 
 Get the top 10 recommended products.
 
@@ -132,6 +132,8 @@ To login to Graph Visualization with the same session, get the current session I
     opg-jshell> session.getId();
     $1 ==> "21526873-768b-49b7-9742-3fa798e00130"
 
+For visualizing this graph, please **do not exit** from the shell so you can keep the session.
+
 ## Visualization
 
 Open Graph Visualization (http://localhost:7007/ui) with username: graph_dev, password: Welcome1, session ID: (above).
@@ -150,6 +152,10 @@ Select "Online Retail" graph, and run the query below to see the paths between t
 Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/highlights.json) for adding icons and changing the size of nodes according to the pagerank.
 
 ![](https://user-images.githubusercontent.com/4862919/91992798-86fb7280-ed6f-11ea-9586-8b600c94a8ed.jpg)
+
+Exit from the shell to close the session.
+
+    opg-jshell> /exit
 
 ## Notebook
 
