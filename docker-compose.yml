@@ -55,7 +55,6 @@ services:
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
-      - ./keystore.p12:/opt/oracle/keystore.p12
     networks:
       - network
   database:
