@@ -66,7 +66,7 @@ Connect to Graph Server using Graph Client (JShell).
     enter password for keystore /opt/oracle/keystore.p12: [oracle]
     opg-jshell>
 
-Get the graph and try a simple PGQL query. ([[Appendix 1]])
+Get the graph and try a simple PGQL query. ([Appendix 1](#appendix-1))
 
     opg-jshell> var graph = session.readGraphWithProperties("/graphs/online_retail/config-tables-distinct.json", "Online Retail");
     graph ==> PgxGraph[name=Online Retail,N=8258,E=532452,created=1599043512155]
