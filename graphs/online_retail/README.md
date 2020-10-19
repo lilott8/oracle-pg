@@ -61,12 +61,11 @@ Access Graph Server with the username and password to get the authentication tok
 Connect to Graph Server using Graph Client (JShell).
 
     $ cd oracle-pg/
-    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007 --secret_store /opt/oracle/keystore.p12
+    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007
     enter authentication token (press Enter for no token):          <-- Input the token above and press Enter
-    enter password for keystore /opt/oracle/keystore.p12: [oracle]
     opg-jshell>
 
-Get the graph and try a simple PGQL query. ([[Appendix 1]])
+Get the graph and try a simple PGQL query. ([Appendix 1](#appendix-1))
 
     opg-jshell> var graph = session.readGraphWithProperties("/graphs/online_retail/config-tables-distinct.json", "Online Retail");
     graph ==> PgxGraph[name=Online Retail,N=8258,E=532452,created=1599043512155]

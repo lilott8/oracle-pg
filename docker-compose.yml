@@ -18,19 +18,11 @@ services:
      - ./graphs:/graphs
      - ./conf/pgx.conf:/etc/oracle/graph/pgx.conf
      - ./conf/server.conf:/etc/oracle/graph/server.conf
-     - ./keystore.p12:/opt/oracle/keystore.p12
     networks:
       - network
-    command: >
-      expect -c "
-        set timeout 3
-        spawn start-server --secret-store /opt/oracle/keystore.p12
-        expect \"enter password for keystore /opt/oracle/keystore.p12:\"
-        send \"oracle\n\"
-        interact
-      "
-    stdin_open: true
-    tty: true
+    command: start-server
+#    stdin_open: true
+#    tty: true
   graph-client:
     build:
       context: .
@@ -40,7 +32,6 @@ services:
     image: graph-client:20.3.0
     volumes:
      - ./graphs:/graphs
-     - ./keystore.p12:/opt/oracle/keystore.p12
     networks:
       - network
     tty: true
@@ -55,7 +46,6 @@ services:
       - ./zeppelin/conf/zeppelin-site.xml:/zeppelin/conf/zeppelin-site.xml
       - ./zeppelin/interpreter/pgx:/zeppelin/interpreter/pgx
       - ./zeppelin/notebook:/zeppelin/notebook
-      - ./keystore.p12:/opt/oracle/keystore.p12
     networks:
       - network
   oracle-db:
