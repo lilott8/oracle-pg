@@ -45,7 +45,7 @@ services:
       - network
     tty: true
   zeppelin:
-    image: apache/zeppelin:0.8.1
+    image: apache/zeppelin:0.8.2
     ports:
       - "8080:8080"
     depends_on:
@@ -68,5 +68,16 @@ services:
       - ORACLE_PWD=Welcome1
     networks:
       - network
+#  jupyter:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile-jupyter
+#      args:
+#        - VERSION=20.4.0
+#    image: jupyter:20.4.0
+#    ports:
+#      - "8888:8888"
+#    networks:
+#      - network
 networks:
   network:

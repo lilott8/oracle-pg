@@ -1,5 +1,4 @@
-packages/*.rpm
-packages/*.zip
+packages/!README.md
 zeppelin/interpreter/pgx/*
 zeppelin/notebook/*
 scripts/oracle-graph-plsql/*

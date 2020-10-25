@@ -53,17 +53,13 @@ Exit from the database container.
 
 ## Make Recommendations
 
-Access Graph Server with the username and password to get the authentication token:
-
-    $ curl -X POST -H 'Content-Type: application/json' -d '{"username": "graph_dev", "password": "Welcome1"}' http://localhost:7007/auth/token
-    {"access_token":"eyJraWQiOiJEY...r2uM6vFhdw","token_type":"bearer","expires_in":14400}
-
 Connect to Graph Server using Graph Client (JShell).
 
     $ cd oracle-pg/
-    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007 --secret_store /opt/oracle/keystore.p12
-    enter authentication token (press Enter for no token):          <-- Input the token above and press Enter
+    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007 --user graph_dev --secret_store /opt/oracle/keystore.p12
+    enter password for user graph_dev (press Enter for no password): [Welcome1]
     enter password for keystore /opt/oracle/keystore.p12: [oracle]
+    ...
     opg-jshell>
 
 Get the graph and try a simple PGQL query. ([[Appendix 1]])
