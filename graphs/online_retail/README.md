@@ -13,17 +13,17 @@ Download dataset `Online Retail.xlsx` from:
 
 Open with Excel and save the file as `data.csv` in CSV format. (Save As > File Format: CSV UTF-8)
 
-Put this file to the `retail` directory.
+Put this file to the `online_retail` directory.
 
     $ mv data.csv oracle-pg/graphs/online_retail/
     $ dos2unix data.csv
 
 ## Load Data into Database
 
-Run a bash console on `oracle-db` container.
+Run a bash console on `database` container as user "54321" (= "oracle" user in the container, for writing the sqlldr files).
 
     $ cd oracle-pg/
-    $ docker-compose exec --user 54321 oracle-db /bin/bash
+    $ docker-compose exec --user 54321 database /bin/bash
 
 Move to the project directory (inside the container).
 
@@ -53,17 +53,13 @@ Exit from the database container.
 
 ## Make Recommendations
 
-Access Graph Server with the username and password to get the authentication token:
-
-    $ curl -X POST -H 'Content-Type: application/json' -d '{"username": "graph_dev", "password": "Welcome1"}' http://localhost:7007/auth/token
-    {"access_token":"eyJraWQiOiJEY...r2uM6vFhdw","token_type":"bearer","expires_in":14400}
-
 Connect to Graph Server using Graph Client (JShell).
 
     $ cd oracle-pg/
-    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007 --secret_store /opt/oracle/keystore.p12
-    enter authentication token (press Enter for no token):          <-- Input the token above and press Enter
+    $ docker-compose exec graph-client opg-jshell -b http://graph-server:7007 --user graph_dev --secret_store /opt/oracle/keystore.p12
+    enter password for user graph_dev (press Enter for no password): [Welcome1]
     enter password for keystore /opt/oracle/keystore.p12: [oracle]
+    ...
     opg-jshell>
 
 Get the graph and try a simple PGQL query. ([Appendix 1](#appendix-1))
@@ -95,7 +91,7 @@ List the products purchased by a customer "cust_12353".
 Run Personalized PageRank (PPR) having the customer "cust_12353" as a focused node.
 
     opg-jshell> var vertex = graph.getVertex("cust_12353");
-    opg-jshell> analyst.personalizedPagerank(graph, vertex)
+    opg-jshell> analyst.personalizedPagerank(graph, vertex);
 
 Get the top 10 recommended products.
 
@@ -132,6 +128,8 @@ To login to Graph Visualization with the same session, get the current session I
     opg-jshell> session.getId();
     $1 ==> "21526873-768b-49b7-9742-3fa798e00130"
 
+For visualizing this graph, please **do not exit** from the shell so you can keep the session.
+
 ## Visualization
 
 Open Graph Visualization (http://localhost:7007/ui) with username: graph_dev, password: Welcome1, session ID: (above).
@@ -150,6 +148,10 @@ Select "Online Retail" graph, and run the query below to see the paths between t
 Import [`highlights.json`](https://github.com/ryotayamanaka/oracle-pg/blob/20.3/graphs/online_retail/highlights.json) for adding icons and changing the size of nodes according to the pagerank.
 
 ![](https://user-images.githubusercontent.com/4862919/91992798-86fb7280-ed6f-11ea-9586-8b600c94a8ed.jpg)
+
+Exit from the shell to close the session.
+
+    opg-jshell> /exit
 
 ## Notebook
 

@@ -1,7 +1,7 @@
 FROM oraclelinux:7-slim
 ARG VERSION
 COPY ./packages/oracle-graph-${VERSION}.x86_64.rpm /tmp
-RUN yum install -y java-1.8.0-openjdk-devel expect numactl \
+RUN yum install -y java-11-openjdk-devel unzip expect numactl vim \
  && yum clean all \
  && rm -rf /var/cache/yum/* \
  && rpm -ivh /tmp/oracle-graph-${VERSION}.x86_64.rpm \

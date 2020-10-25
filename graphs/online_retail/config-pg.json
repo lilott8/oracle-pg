@@ -1,7 +1,7 @@
 {
   "format":"pg",
   "db_engine":"rdbms",
-  "jdbc_url":"jdbc:oracle:thin:@oracle-db:1521/orclpdb1",
+  "jdbc_url":"jdbc:oracle:thin:@database:1521/orclpdb1",
   "username":"retail",
   "keystore_alias":"database1",
   "max_num_connections":8,

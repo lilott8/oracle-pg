@@ -1,3 +1,4 @@
+SET ECHO ON
 SET LINESIZE 200
 COL stock_code FOR a20
 COL country FOR a20
@@ -17,7 +18,6 @@ WHERE customer_id IS NOT NULL
 GROUP BY customer_id
 ;
 
-SET ECHO ON
 SELECT * FROM customers WHERE ROWNUM <= 5;
 
 CREATE TABLE products (
@@ -35,7 +35,6 @@ WHERE stock_code IS NOT NULL
 GROUP BY stock_code
 ;
 
-SET ECHO ON
 SELECT * FROM products WHERE ROWNUM <= 5;
 
 CREATE TABLE purchases (
@@ -58,9 +57,7 @@ WHERE stock_code IS NOT NULL
   AND quantity > 0
 ;
 
-SET ECHO ON
 SELECT * FROM purchases WHERE ROWNUM <= 5;
-
 
 CREATE TABLE purchases_distinct (
   purchase_id
@@ -82,8 +79,6 @@ FROM (
     AND quantity > 0
 );
 
-SET ECHO ON
 SELECT * FROM purchases_distinct WHERE ROWNUM <= 5;
-
 
 EXIT
