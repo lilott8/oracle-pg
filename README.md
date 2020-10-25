@@ -49,7 +49,7 @@ Put the following files to `oracle-pg/packages/`
 
 Run the following script to extract packages:
 
-    $ cd oracle-pg/packages/
+    $ cd oracle-pg/
     $ sh extract.sh
 
 ## Start a Container (Database)
