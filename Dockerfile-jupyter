@@ -1,0 +1,8 @@
+FROM jupyter/scipy-notebook:feacdbfc2e89
+ARG VERSION
+COPY ./packages/oracle-graph-client-${VERSION}.zip /
+USER root
+RUN apt update \
+ && apt install -y openjdk-11-jdk \
+ && pip3 install jnius \
+ && pip3 install /oracle-graph-client-${VERSION}.zip
