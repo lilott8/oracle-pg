@@ -60,6 +60,7 @@ Connect to Graph Server using Graph Client (JShell).
     ...
     opg-jshell>
 
+
 Read the data from database and convert to a graph. ([[Appendix 1]])
 
     opg-jshell> var graph = session.readGraphWithProperties("/graphs/online_retail/config-tables-distinct.json", "Online Retail");
