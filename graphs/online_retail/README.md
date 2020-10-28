@@ -4,7 +4,7 @@ In this tutorial, we load the product purchase information from Database to Grap
 
 Please setup containers following the instruction [here](https://github.com/ryotayamanaka/oracle-pg/blob/master/README.md).
 
-## Load Data into Database
+## Download Dataset
 
 Download dataset `Online Retail.xlsx` from:
 
@@ -29,11 +29,11 @@ Move to the project directory (inside the container).
 
     $ cd /graphs/online_retail/
 
-Create a database user and `transactions` table, then load the data from the csv files.
+Create a database user `online_retail`.
 
     $ sqlplus sys/Welcome1@orclpdb1 as sysdba @create_user.sql
 
-Create `transactions` table.
+Create a table `transactions`.
 
     $ sqlplus online_retail/Welcome1@orclpdb1 @create_table.sql
 
