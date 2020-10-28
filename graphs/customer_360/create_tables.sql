@@ -1,10 +1,10 @@
--- DROP TABLE customer_360.account;
--- DROP TABLE customer_360.customer;
--- DROP TABLE customer_360.merchant;
--- DROP TABLE customer_360.owned_by;
--- DROP TABLE customer_360.parent_of;
--- DROP TABLE customer_360.purchased;
--- DROP TABLE customer_360.transfer;
+ DROP TABLE customer_360.account;
+ DROP TABLE customer_360.customer;
+ DROP TABLE customer_360.merchant;
+ DROP TABLE customer_360.owned_by;
+ DROP TABLE customer_360.parent_of;
+ DROP TABLE customer_360.purchased;
+ DROP TABLE customer_360.transfer;
 
 CREATE TABLE customer_360.account (
   id NUMBER NOT NULL
@@ -54,9 +54,10 @@ INSERT INTO customer_360.merchant (id,type,name) VALUES (305,'merchant','ABC Tra
 COMMIT;
 
 CREATE TABLE customer_360.owned_by (
-  from_id NUMBER, 
-  to_id NUMBER, 
-  since VARCHAR2(20)
+  from_id NUMBER
+, to_id NUMBER
+, since VARCHAR2(20)
+, CONSTRAINT owned_by_pk PRIMARY KEY (from_id, to_id)
 );
 
 INSERT INTO customer_360.owned_by (from_id,to_id,since) VALUES (201,101,'2015-10-04');
@@ -68,14 +69,16 @@ COMMIT;
 CREATE TABLE customer_360.parent_of (
   from_id NUMBER
 , to_id NUMBER
+, CONSTRAINT parent_of_pk PRIMARY KEY (from_id, to_id)
 );
 
 INSERT INTO customer_360.parent_of (from_id,to_id) VALUES (103,104);
 
 CREATE TABLE customer_360.purchased (
-  from_id NUMBER, 
-  to_id NUMBER, 
-  amount NUMBER
+  from_id NUMBER 
+, to_id NUMBER
+, amount NUMBER
+, CONSTRAINT purchased_pk PRIMARY KEY (from_id, to_id)
 );
 
 INSERT INTO customer_360.purchased (from_id,to_id,amount) VALUES (201,301,800);
@@ -95,17 +98,26 @@ CREATE TABLE customer_360.transfer (
   from_id NUMBER
 , to_id NUMBER
 , amount NUMBER
-, "DATE" VARCHAR2(20)
+, tx_date VARCHAR2(20)
+, CONSTRAINT transfer_pk PRIMARY KEY (from_id, to_id)
 );
 
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (201,202,200,'2018-10-05');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (211,202,900,'2018-10-06');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (202,212,850,'2018-10-06');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (201,203,500,'2018-10-07');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (203,204,450,'2018-10-08');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (204,201,400,'2018-10-09');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (202,203,100,'2018-10-10');
-INSERT INTO customer_360.transfer (from_id,to_id,amount,"DATE") VALUES (202,201,300,'2018-10-10');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (201,202,200,'2018-10-05');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (211,202,900,'2018-10-06');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (202,212,850,'2018-10-06');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (201,203,500,'2018-10-07');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (203,204,450,'2018-10-08');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (204,201,400,'2018-10-09');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (202,203,100,'2018-10-10');
+INSERT INTO customer_360.transfer (from_id,to_id,amount,tx_date) VALUES (202,201,300,'2018-10-10');
 COMMIT;
+
+GRANT SELECT ON account TO graph_dev;
+GRANT SELECT ON customer TO graph_dev;
+GRANT SELECT ON merchant TO graph_dev;
+GRANT SELECT ON owned_by TO graph_dev;
+GRANT SELECT ON parent_of TO graph_dev;
+GRANT SELECT ON purchased TO graph_dev;
+GRANT SELECT ON transfer TO graph_dev;
 
 EXIT
