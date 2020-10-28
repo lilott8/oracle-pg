@@ -45,6 +45,10 @@ This table can be normalized to create 4 tables (`customers`, `products`, `purch
 
     $ sqlplus online_retail/Welcome1@orclpdb1 @create_table_normalized.sql
 
+Give `graph_dev` the permission to access the tables.
+
+    $ sqlplus online_retail/Welcome1@orclpdb1 @grant.sql
+
 Exit from the database container.
 
     $ exit
