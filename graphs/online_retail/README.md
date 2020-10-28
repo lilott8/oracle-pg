@@ -4,7 +4,7 @@ In this tutorial, we load the product purchase information from Database to Grap
 
 Please setup containers following the instruction [here](https://github.com/ryotayamanaka/oracle-pg/blob/master/README.md).
 
-## Load Data into Database
+## Download Dataset
 
 Download dataset `Online Retail.xlsx` from:
 
@@ -29,19 +29,17 @@ Move to the project directory (inside the container).
 
     $ cd /graphs/online_retail/
 
-Create a database user and `transactions` table, then load the data from the csv files.
+Create a database user `online_retail`.
 
     $ sqlplus sys/Welcome1@orclpdb1 as sysdba @create_user.sql
 
-Create `transactions` table.
+Create a table `transactions`.
 
     $ sqlplus online_retail/Welcome1@orclpdb1 @create_table.sql
 
 Load the data from the CSV file.
 
     $ sqlldr online_retail/Welcome1@orclpdb1 sqlldr.ctl sqlldr.log sqlldr.bad direct=true
-
-## Convert Data from Tables to Graph
 
 This table can be normalized to create 4 tables (`customers`, `products`, `purchases`, `purchases_distinct`).
 
@@ -62,10 +60,12 @@ Connect to Graph Server using Graph Client (JShell).
     ...
     opg-jshell>
 
-Get the graph and try a simple PGQL query. ([[Appendix 1]])
+Read the data from database and convert to a graph. ([[Appendix 1]])
 
     opg-jshell> var graph = session.readGraphWithProperties("/graphs/online_retail/config-tables-distinct.json", "Online Retail");
     graph ==> PgxGraph[name=Online Retail,N=8258,E=532452,created=1599043512155]
+
+Try a simple PGQL query.
 
     opg-jshell> graph.queryPgql(" SELECT n.description MATCH (n:Product) LIMIT 3 ").print();
     +-----------------------------------+
