@@ -12,6 +12,7 @@ After setting up this demo environment, you can also try:
 
 - [customer_360](./graphs/customer_360/README.md) - Customer 360 analysis in banking 
 - [online_retail](./graphs/online_retail/README.md) - Recommendation system in online retail
+- [mule_account](./graphs/mule_account/README.md) - Fake account detection in fraud analysis
 
 ## Build Docker Image for Oracle Database
 
