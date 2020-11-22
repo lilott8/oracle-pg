@@ -98,7 +98,7 @@ Build and pull images, create containers, and start them.
 
 **This job takes time.** `Cnt+C` to stop all containers.
 
-Access Graph Visualization and Zeppelin to start graph analytics.
+Access Graph Visualization and Zeppelin to start graph analytics. Please use **FireFox**.
 
 * Graph Visualization - http://localhost:7007/ui/ (User: graph_dev, Password: Welcome1)
 * Jupyter - http://localhost:8888/
