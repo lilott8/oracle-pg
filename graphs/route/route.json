@@ -6,7 +6,7 @@
     {"name":"name", "type":"string"}
   ]
 , "edge_props":[
-    {"name":"score", "type":"double"}
+    {"name":"cost", "type":"double"}
   ]
 , "separator": ","
 }
