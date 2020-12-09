@@ -4,7 +4,7 @@ Try graph queries in 5 min.
 
 ![](./graph.png)
 
-# Setup
+## Setup
 
 Install JDK 11 on your Linux.
 
@@ -12,7 +12,7 @@ Download [Oracle Graph Server](https://www.oracle.com/database/technologies/spat
 
 Install Oracle Graph Server.
 
-# Try graph queries
+## Try graph queries
 
 Locate graph dataset files.
 
@@ -62,3 +62,28 @@ Exit JShell.
 
     /exit
 
+## Using Graph Viz
+
+Graph Viz can also return the result as a table.
+
+    SELECT a.name AS a, b.name AS b, COUNT(e) AS path_length, SUM(e.cost) AS total_cost, ARRAY_AGG(n.name) AS nodes, ARRAY_AGG(ID(e)) AS edges
+    FROM MATCH CHEAPEST ( (a) (-[e]->(n) COST e.cost)* (b) )
+    WHERE a.name = 'A' AND b.name = 'H'
+
+![](./img/screen01.jpg)
+
+However, the path detected is visualized as a dot-line only.
+
+    SELECT a, b
+    FROM MATCH CHEAPEST ( (a) (-[e]->(n) COST e.cost)* (b) )
+    WHERE a.name = 'A' AND b.name = 'H'
+
+![](./img/screen02.jpg)
+
+To show the intermediate nodes, visualize the list of edges.
+
+    SELECT *
+    FROM MATCH ()-[e]->()
+    WHERE ID(e) IN (0, 3, 8, 7, 13)
+
+![](./img/screen03.jpg)
