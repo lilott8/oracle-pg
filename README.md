@@ -83,6 +83,7 @@ Connect to the Oracle Database server. See [Appendix 1](#appendix-1) if you get 
 
 Configure Property Graph features. This script was extracted from oracle-graph-plsql-xx.x.x.zip.
 
+    SQL> @/home/oracle/scripts/oracle-graph-plsql/19c_and_above/opgremov.sql
     SQL> @/home/oracle/scripts/oracle-graph-plsql/19c_and_above/catopg.sql
 
 Create user roles (graph_developer, graph_administrator) and users (graph_dev, graph_admin).
