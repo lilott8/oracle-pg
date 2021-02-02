@@ -87,3 +87,9 @@ To show the intermediate nodes, visualize the list of edges.
     WHERE ID(e) IN (0, 3, 8, 7, 13)
 
 ![](./img/screen03.jpg)
+
+## Using Algorithm API
+
+src = graph.getVertex(128);
+
+
