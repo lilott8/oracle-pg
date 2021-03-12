@@ -101,6 +101,8 @@ Build and pull images, create containers, and start them.
 
 **This job takes time.** `Cnt+C` to stop all containers.
 
+If there are any errors with `jnius` or `Cython` see Appendix 3.
+
 Access Graph Visualization and Zeppelin to start graph analytics. Please use **FireFox**.
 
 * Graph Visualization - http://localhost:7007/ui/ (User: graph_dev, Password: Welcome1)
@@ -140,3 +142,9 @@ To remove the docker containers.
 
     $ cd oracle-pg/
     $ docker-compose down
+    
+## Appendix 3
+
+If `jnius/Cython` throw errors or complain about not finding `JDK_HOME`, in Dockerfile-client rem out the pip installation of `jnius` and `Cython`.
+In DOckerfile-server rem out references to jupyter notebooks.
+Rebuilding should occur without issue.
